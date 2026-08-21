@@ -554,7 +554,14 @@ function bindMusicEvents() {
 function bindAudioEvents() {
   state.audio.volume = state.music.volume;
   state.audio.addEventListener("timeupdate", updateProgressDisplay);
-  state.audio.addEventListener("loadedmetadata", updateProgressDisplay);
+  state.audio.addEventListener("timeupdate", updateMediaSessionPositionState);
+  state.audio.addEventListener("loadedmetadata", () => {
+    updateProgressDisplay();
+    updateMediaSessionPositionState();
+  });
+  state.audio.addEventListener("play", updateMediaSessionPlaybackState);
+  state.audio.addEventListener("pause", updateMediaSessionPlaybackState);
+  bindMediaSessionControls();
   state.audio.addEventListener("ended", () => {
     const list = getVisibleSongs();
     if (!list.length) return;
@@ -643,6 +650,7 @@ function setAudioTrack(song) {
 
   state.music.currentTrackId = track.id;
   state.music.loadedTrackId = track.id;
+  updateMediaSessionMetadata(track);
 
   if (state.audio.src !== track.src) {
     state.audio.src = track.src;
@@ -660,9 +668,11 @@ function playAudio() {
   state.music.isPlaying = true;
   state.audio.play().catch(() => {
     state.music.isPlaying = false;
+    updateMediaSessionPlaybackState();
     console.warn("Autoplay bloqueado hasta la interacción del usuario");
   });
   if (toggleButton) toggleButton.textContent = "❚❚";
+  updateMediaSessionPlaybackState();
 }
 
 function pauseAudio() {
@@ -670,6 +680,83 @@ function pauseAudio() {
   state.music.isPlaying = false;
   const toggleButton = document.querySelector('[data-action="toggle"]');
   if (toggleButton) toggleButton.textContent = "▶";
+  updateMediaSessionPlaybackState();
+}
+
+function updateMediaSessionMetadata(track) {
+  if (!("mediaSession" in navigator) || !("MediaMetadata" in window) || !track) return;
+
+  const artwork = track.image ? new URL(track.image, document.baseURI).href : new URL("assets/logo-dark.webp", document.baseURI).href;
+  navigator.mediaSession.metadata = new MediaMetadata({
+    title: track.title,
+    artist: track.artist || "INDESENTES",
+    album: track.album || "Nuestra Música",
+    artwork: [{ src: artwork, sizes: "512x512", type: getArtworkType(artwork) }],
+  });
+}
+
+function getArtworkType(url) {
+  const extension = url.split("?")[0].split(".").pop().toLowerCase();
+  return extension === "webp" ? "image/webp" : extension === "png" ? "image/png" : "image/jpeg";
+}
+
+function updateMediaSessionPlaybackState() {
+  if (!("mediaSession" in navigator)) return;
+  navigator.mediaSession.playbackState = state.audio.paused ? "paused" : "playing";
+}
+
+function updateMediaSessionPositionState() {
+  if (!("mediaSession" in navigator) || !navigator.mediaSession.setPositionState) return;
+  const duration = state.audio.duration;
+  if (!Number.isFinite(duration) || duration <= 0 || state.audio.currentTime > duration) return;
+
+  navigator.mediaSession.setPositionState({
+    duration,
+    playbackRate: state.audio.playbackRate,
+    position: state.audio.currentTime,
+  });
+}
+
+function bindMediaSessionControls() {
+  if (!("mediaSession" in navigator) || !navigator.mediaSession.setActionHandler) return;
+
+  const handlers = {
+    play: () => playAudio(),
+    pause: () => pauseAudio(),
+    seekbackward: (details) => seekAudio(-(details.seekOffset || 10)),
+    seekforward: (details) => seekAudio(details.seekOffset || 10),
+    seekto: (details) => {
+      if (Number.isFinite(details.seekTime)) state.audio.currentTime = details.seekTime;
+    },
+    previoustrack: () => changeTrack(-1),
+    nexttrack: () => changeTrack(1),
+  };
+
+  Object.entries(handlers).forEach(([action, handler]) => {
+    try {
+      navigator.mediaSession.setActionHandler(action, handler);
+    } catch (error) {
+      console.warn(`Media Session no soporta la acción ${action}`, error);
+    }
+  });
+}
+
+function seekAudio(offset) {
+  state.audio.currentTime = Math.max(0, Math.min(state.audio.duration || Infinity, state.audio.currentTime + offset));
+  updateProgressDisplay();
+}
+
+function changeTrack(direction) {
+  const list = getVisibleSongs();
+  if (!list.length) return;
+
+  state.music.currentIndex = getNextIndex(list, state.music.currentIndex, direction);
+  const nextSong = list[state.music.currentIndex];
+  state.music.currentTrackId = nextSong.id;
+  setAudioTrack(nextSong);
+  renderMusic();
+  state.music.isPlaying = true;
+  playAudio();
 }
 
 function updateProgressDisplay() {
