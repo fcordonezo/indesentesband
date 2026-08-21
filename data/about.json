@@ -1,0 +1,55 @@
+{
+  "heading": "Nosotros",
+  "story": {
+    "title": "Nuestra historia",
+    "text": "INDESENTES nació como una idea de amigos con una misma obsesión: hacer rock con memoria, fuerza y personalidad. Los arreglos duros, las letras profundas y la presencia escénica fueron la piedra angular desde el inicio.",
+    "details": [
+      { "label": "Origen", "value": "Bogotá, Colombia" },
+      { "label": "Estilo", "value": "Rock alternativo, punk rock" },
+      { "label": "Actitud", "value": "Auténtica y directa en cada show" }
+    ]
+  },
+  "mission": {
+    "title": "Nuestra misión",
+    "text": "Crear música que se sienta en el cuerpo y se queda en la memoria, conectando con la gente a través de emociones, intensidad y una escencia muy de barrio, muy de estadio."
+  },
+  "members": {
+    "heading": "Integrantes",
+    "items": [
+      {
+        "name": "Curtis",
+        "role": "Voz y guitarra",
+        "image": "assets/members/curtis.webp",
+        "social media": [
+          { "name": "Instagram", "url": "https://www.instagram.com/curtisnow19" },
+          { "name": "Facebook", "url": "https://www.facebook.com/curtiSnow" }
+        ]
+      },
+      {
+        "name": "Jair",
+        "role": "guitarra",
+        "image": "assets/members/jair.webp",
+        "social media": [
+          { "name": "Instagram", "url": "https://www.instagram.com/jairsabbath1" }
+        ]
+      },
+      {
+        "name": "Camilo",
+        "role": "Bajo y coros",
+        "image": "assets/members/camilo.webp",
+        "social media": [
+          { "name": "Instagram", "url": "https://www.instagram.com/fabiancamilo96" },
+          { "name": "Facebook", "url": "https://www.facebook.com/fabiancamilo9607" }
+        ]
+      },
+      {
+        "name": "Cris",
+        "role": "Batería",
+        "image": "assets/members/cris.webp",
+        "social media": [
+          { "name": "Instagram", "url": "https://www.instagram.com/criss_camm" }
+        ]
+      }
+    ]
+  }
+}

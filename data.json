@@ -1,0 +1,236 @@
+{
+  "site": {
+    "title": "INDESENTES",
+    "tagline": "Rock con identidad, fuerza de estadio y una energía que deja huella.",
+    "socials": [
+      { "label": "Instagram", "icon": "instagram", "url": "https://www.instagram.com/" },
+      { "label": "Facebook", "icon": "facebook", "url": "https://www.facebook.com/" },
+      { "label": "Correo", "icon": "email", "url": "mailto:contacto@indesentesband.com" }
+    ],
+    "nav": [
+      { "id": "home", "label": "Home" },
+      { "id": "music", "label": "Music" },
+      { "id": "events", "label": "Events" },
+      { "id": "about", "label": "About Us" },
+      { "id": "contact", "label": "Contact" }
+    ],
+    "theme": {
+      "darkLogo": "assets/logo-dark.webp",
+      "lightLogo": "assets/logo-light.webp"
+    },
+    "footer": {
+      "copyright": "© 2026 INDESENTES. Todos los derechos reservados."
+    }
+  },
+  "home": {
+    "hero": {
+      "title": "Riffs, melodía y noches que piden volumen.",
+      "description": "INDESENTES combina intensidad rockera con melodías memorables, llevando una propuesta auténtica desde la ciudad hasta el escenario. Descubre nuevas canciones, próximos conciertos y momentos de la banda.",
+      "badges": ["Rock en español", "Live energy", "Nuevos shows"]
+    },
+    "metrics": {
+      "heading": "En movimiento",
+      "items": [
+        { "value": "13", "label": "Canciones de estudio" },
+        { "value": "25+", "label": "Shows" }
+      ]
+    },
+    "features": {
+      "heading": "Lo que estamos trayendo",
+      "items": [
+        {
+          "title": "Nuevas canciones",
+          "description": "Material fresco con guitarras pesadas, melodías claras y letras que hablan de intensidad, memoria y deseo."
+        },
+        {
+          "title": "Directo con actitud",
+          "description": "Presentaciones en vivo con energía, presencia escénica y un repertorio de alta identificación para cada público."
+        },
+        {
+          "title": "Conexión con la comunidad",
+          "description": "Eventos, colaboraciones y encuentros con fanáticos, venues y artistas del circuito local."
+        }
+      ]
+    },
+    "instagram": {
+      "heading": "Últimos momentos",
+      "items": [
+        {
+          "image": "https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=900&q=80",
+          "caption": "Ensayo de bajo y batería en una noche de lluvia."
+        },
+        {
+          "image": "https://images.unsplash.com/photo-1501612780327-45045538702b?auto=format&fit=crop&w=900&q=80",
+          "caption": "Escenario, humo y energía pura durante la previa del show."
+        },
+        {
+          "image": "https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=900&q=80",
+          "caption": "Grabación en estudio con detalle, fuerte y emocional."
+        }
+      ]
+    },
+    "media": {
+      "heading": "Escucha y mira",
+      "embeds": [
+        {
+          "title": "Spotify",
+          "src": "https://open.spotify.com/embed/album/1MUV5BfG0R5Y1eHQw3B2mJ?utm_source=generator"
+        },
+        {
+          "title": "YouTube",
+          "src": "https://www.youtube.com/embed/ScMzIvxBSi4?si=8Zbt8K7f6E6hW6vS"
+        }
+      ]
+    }
+  },
+  "music": {
+    "heading": "Música",
+    "subtitle": "Siente cada corte, cambia el orden y descubre la lista de reproducción.",
+    "categories": ["rock", "acustico", "live"],
+    "songs": [
+      {
+        "id": "s1",
+        "title": "Puertas de humo",
+        "artist": "INDESENTES",
+        "album": "Fuego sin brújula",
+        "category": "rock",
+        "duration": "3:24",
+        "image": "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=900&q=80",
+        "order": 1,
+        "src": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
+      },
+      {
+        "id": "s2",
+        "title": "Voces del desvelo",
+        "artist": "INDESENTES",
+        "album": "Fuego sin brújula",
+        "category": "rock",
+        "duration": "4:11",
+        "image": "https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=900&q=80",
+        "order": 2,
+        "src": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3"
+      },
+      {
+        "id": "s3",
+        "title": "Luz en la pared",
+        "artist": "INDESENTES",
+        "album": "Seis de la mañana",
+        "category": "acustico",
+        "duration": "2:56",
+        "image": "https://images.unsplash.com/photo-1511379938547-c1f69419868d?auto=format&fit=crop&w=900&q=80",
+        "order": 3,
+        "src": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3"
+      },
+      {
+        "id": "s4",
+        "title": "Bajo el humo",
+        "artist": "INDESENTES",
+        "album": "En vivo desde la sala",
+        "category": "live",
+        "duration": "4:44",
+        "image": "https://images.unsplash.com/photo-1501612780327-45045538702b?auto=format&fit=crop&w=900&q=80",
+        "order": 4,
+        "src": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3"
+      },
+      {
+        "id": "s5",
+        "title": "Tierra sin fondo",
+        "artist": "INDESENTES",
+        "album": "Seis de la mañana",
+        "category": "acustico",
+        "duration": "3:41",
+        "image": "",
+        "order": 5,
+        "src": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3"
+      }
+    ]
+  },
+  "events": {
+    "heading": "Eventos",
+    "subtitle": "Próximas presentaciones, shows y espacios de encuentro.",
+    "events": [
+      {
+        "name": "Ritual del ruido",
+        "type": "Concierto",
+        "venue": "Sala de la Luna",
+        "date": "14 de septiembre",
+        "time": "20:30",
+        "price": "Gratis",
+        "description": "Noche de rock con la banda completa, visuales en vivo y una sesión especial de cierre para la comunidad local.",
+        "flyers": [
+          "https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=900&q=80",
+          "https://images.unsplash.com/photo-1501612780327-45045538702b?auto=format&fit=crop&w=900&q=80"
+        ],
+        "mapUrl": "https://www.google.com/maps/search/?api=1&query=Sala+de+la+Luna+Bogota",
+        "calendarUrl": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Ritual%20del%20ruido%20-%20INDESENTES&location=Sala%20de%20la%20Luna%20Bogota&dates=20260914T203000Z/20260914T233000Z"
+      },
+      {
+        "name": "Fuego en la plaza",
+        "type": "Festival",
+        "venue": "Parque de los Cerezos",
+        "date": "28 de septiembre",
+        "time": "19:00",
+        "price": "$35.000",
+        "description": "Festival de bandas locales con puesta en escena abierta, artistas invitados y zona de comida para la noche completa.",
+        "flyers": [
+          "https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=900&q=80",
+          "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=900&q=80"
+        ],
+        "mapUrl": "https://www.google.com/maps/search/?api=1&query=Parque+de+los+Cerezos+Bogota",
+        "calendarUrl": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Fuego%20en%20la%20plaza%20-%20INDESENTES&location=Parque%20de%20los%20Cerezos%20Bogota&dates=20260928T190000Z/20260928T230000Z"
+      }
+    ]
+  },
+  "about": {
+    "heading": "Nosotros",
+    "story": {
+      "title": "Nuestra historia",
+      "text": "INDESENTES nació como una idea de amigos con una misma obsesión: hacer rock con memoria, fuerza y personalidad. Los arreglos duros, las letras profundas y la presencia escénica fueron la piedra angular desde el inicio.",
+      "details": [
+        { "label": "Origen", "value": "Bogotá, Colombia" },
+        { "label": "Estilo", "value": "Rock alternativo con raíces pesadas" },
+        { "label": "Actitud", "value": "Auténtica y directa en cada show" }
+      ]
+    },
+    "mission": {
+      "title": "Nuestra misión",
+      "text": "Crear música que se sienta en el cuerpo y se queda en la memoria, conectando con la gente a través de emociones, intensidad y una escencia muy de barrio, muy de estadio."
+    },
+    "members": {
+      "heading": "Integrantes",
+      "items": [
+        {
+          "name": "Mateo Ruíz",
+          "role": "Voz y guitarra",
+          "bio": "Escribe las letras y lidera la energía del grupo con una voz que combina intensidad y claridad.",
+          "image": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=900&q=80"
+        },
+        {
+          "name": "Nicolás Vega",
+          "role": "Bajo",
+          "bio": "Construye el pulso grave y la textura que da profundidad a cada canción y cada presentación en vivo.",
+          "image": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=900&q=80"
+        },
+        {
+          "name": "Santiago Pérez",
+          "role": "Batería",
+          "bio": "Da el empuje, la fuerza y la precisión que convierten los temas en un golpe de energía real.",
+          "image": "https://images.unsplash.com/photo-1504593811423-6dd665756598?auto=format&fit=crop&w=900&q=80"
+        }
+      ]
+    }
+  },
+  "contact": {
+    "heading": "Contacto",
+    "info": {
+      "title": "Agenda tu evento",
+      "description": "Si buscas una banda para conciertos, festivales, bares, salas o presentaciones especiales, escribe con nosotros.",
+      "email": "contacto@indesentesband.com",
+      "whatsapp": "+57 300 000 0000",
+      "city": "Bogotá, Colombia"
+    },
+    "form": {
+      "title": "Solicita una presentación"
+    }
+  }
+}

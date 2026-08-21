@@ -1,0 +1,23 @@
+{
+  "title": "INDESENTES",
+  "tagline": "Banda de punk rock y rock alternativo de Bogotá, Colombia",
+  "socials": [
+    { "label": "Instagram", "icon": "instagram", "url": "https://www.instagram.com/indesentesband/" },
+    { "label": "Facebook", "icon": "facebook", "url": "https://www.facebook.com/indesentespr" },
+    { "label": "Correo", "icon": "email", "url": "mailto:contacto@indesentesband.com" }
+  ],
+  "nav": [
+    { "id": "home", "label": "Inicio" },
+    { "id": "music", "label": "Nuestra Música" },
+    { "id": "events", "label": "Eventos" },
+    { "id": "about", "label": "Nosotros" },
+    { "id": "contact", "label": "Contacto" }
+  ],
+  "theme": {
+    "darkLogo": "assets/logo-dark.webp",
+    "lightLogo": "assets/logo-light.webp"
+  },
+  "footer": {
+    "copyright": "© 2026 INDESENTES. Todos los derechos reservados."
+  }
+}

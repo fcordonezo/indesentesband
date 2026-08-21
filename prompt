@@ -1,0 +1,20 @@
+Quiero que me ayudes a construir una web page para mi banda de rock llamada INDESENTES, con las siguientes características
+- Debe ser utilizando vanilla JS (es decir, sólo html, css, js y json). Nada de frameworks de JS como VUE, REACT ni nada de eso.
+- Debe ser full responsive.
+- Debe tener i18n (inglés y español)
+- Las integraciones con fuentes externas deben ser sin utilziar API  Keys. Que sea en forma de APIs públicas o similar.
+- El contenido "dinámico" de la página como los textos de i18n, la lista de canciones con título, links y demás, y todo lo necesario debería estar en estructuras json.
+- Debe ser tipo SPA. Es decir que al hacer clic en un menú, se dejará de renderizar lo que estaba antes y se pasará a renderizar lo nuevo. Sin dejar de renderizar el header.
+- Debe tener dark y light mode dependiendo de la config del dispositivo y de un botón flotante en la parte superior derecha haciendo las veces de toggle. Cuando el modo es dark, el botón debe mostrar un ícono de sol, y cuando es light muestra una luna.
+- Se cargará una imagen del logo de la banda diferente dependiendo de si está en dark o light mode.
+- Se debe tener un diseño limpio, claro y elegante.
+- Como estructra quiero un header, luego un navbar, después el body, y luego el footer.
+- En el header quiero poner una imagen del logo de mi banda al lado izquierdo. Al lado derecho de esta imagen estará el título que será el nombre de la banda. Debajo del título habrá un pequeño texto descriptivo, y más abajo íconos para las redes sociales (IG, FB, eMail)
+- para el navbar quiero que esté debajo del header, y que al llegar a la parte de arriba de la página al hacer scroll down, se fije al techo de la pantalla. Este navbar contiene los menús de: Inicio, Música, Eventos, Nosotros y Contacto
+- Para el body dependerá del menú del navbar que esté seleccionado:
+- Inicio: Este contenido aún no lo tengo claro. Puedes poner algunas secciones de ejemplo de contenido que podría venir bien para la banda, feed y publicaciones de Instagram, Spotify, Youtube, etc.
+- Música: En este menú quiero tener un reproductor integrado, con el cual se puedan reproducir canciones en formato .mp3 o .wav. Con funciones básicas como play, pause, next, previous, una barra de progreso interactiva, etc. y con la lista de canciones a un costado, agrupadas por items como categoría, álbum, "todo", o similares. También el poder cambiar el orden de las canciones para cómo las ve el cliente web. Cuando termina una canción se reproduce la siguiente a continuación. Todo esto en estructuras json que sean consumidas desde JS. Y en cada registro quiero poder tener la url o path de una imagen de cada canción para que se muestre en pantalla mientras se reproduce dicha canción. En caso de ausencia de imagen, que se muestre un fondo neutro.
+- Eventos: En este menú quiero poder poner toda la información de nuevos eventos (conciertos, toques, etc.). Información útil como el nombre del evento, el nombre del lugar, la fecha y hora, el precio de la boletería (o "Gratis") si es que no tiene cover (precio), una integración con maps para poder hacer clic en un botón y que esto redirija hacia google maps en el lugar exacto, una o varias imagenes del/los Flayers/carteletas, y toda la información que pueda ser relevante. Esto en otra estructura json. En caso de que sea posible, otro botón para que redirija a google calendar a crear un evento en el calentario del cliente con la información pre-cargada.
+Nosotros: Información sobre la banda, sobre los integrantes, y cualquier información relevante
+Contacto: Una pequeña descripción sobre los eventos que cubrimos, lugares, e información de contacto útil para que nos contacten. También un pequeño formulario con campos como nombre de quien remite, correo, WhatsApp de contacto (opcional), descripción del evento, etc. Y que esta información se pueda enviar automáticamente al correo configurado de la banda. En caso de que no se pueda hacer el envío inmediato, al menos que se precargue la información con un "mailto"
+- Finalmetne en el footer debe estar la información de copyright de la banda

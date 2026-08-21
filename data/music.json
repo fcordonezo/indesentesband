@@ -1,0 +1,150 @@
+{
+  "heading": "Música",
+  "subtitle": "Toda nuestra historia",
+  "categories": ["rock"],
+  "songs": [
+    {
+      "id": "s1",
+      "title": "Igual que los demás",
+      "artist": "INDESENTES",
+      "album": "Muerto En Vida",
+      "category": "rock",
+      "duration": "5:06",
+      "image": "assets/muerto en vida.webp",
+      "order": 1,
+      "src": "music/muerto en vida/igual que los demas.mp3"
+    },
+    {
+      "id": "s2",
+      "title": "Pasa el tiempo",
+      "artist": "INDESENTES",
+      "album": "Muerto En Vida",
+      "category": "rock",
+      "duration": "3:12",
+      "image": "assets/muerto en vida.webp",
+      "order": 2,
+      "src": "music/muerto en vida/pasa el tiempo.mp3"
+    },
+    {
+      "id": "s3",
+      "title": "Uno más",
+      "artist": "INDESENTES",
+      "album": "Muerto En Vida",
+      "category": "rock",
+      "duration": "3:22",
+      "image": "assets/muerto en vida.webp",
+      "order": 3,
+      "src": "music/muerto en vida/uno mas.mp3"
+    },
+    {
+      "id": "s4",
+      "title": "De vez en cuando",
+      "artist": "INDESENTES",
+      "album": "Muerto En Vida",
+      "category": "rock",
+      "duration": "3:38",
+      "image": "assets/muerto en vida.webp",
+      "order": 4,
+      "src": "music/muerto en vida/de vez en cuando.mp3"
+    },
+    {
+      "id": "s5",
+      "title": "Caída tras caída",
+      "artist": "INDESENTES",
+      "album": "Muerto En Vida",
+      "category": "rock",
+      "duration": "3:12",
+      "image": "assets/muerto en vida.webp",
+      "order": 5,
+      "src": "music/muerto en vida/caida tras caida.mp3"
+    },
+    {
+      "id": "s6",
+      "title": "El mismo aire",
+      "artist": "INDESENTES",
+      "album": "Muerto En Vida",
+      "category": "rock",
+      "duration": "3:39",
+      "image": "assets/muerto en vida.webp",
+      "order": 6,
+      "src": "music/muerto en vida/el mismo aire.mp3"
+    },
+    {
+      "id": "s7",
+      "title": "Frenesí",
+      "artist": "INDESENTES",
+      "album": "Muerto En Vida",
+      "category": "rock",
+      "duration": "4:39",
+      "image": "assets/muerto en vida.webp",
+      "order": 7,
+      "src": "music/muerto en vida/frenesi.mp3"
+    },
+    {
+      "id": "s8",
+      "title": "Ironía",
+      "artist": "INDESENTES",
+      "album": "Muerto En Vida",
+      "category": "rock",
+      "duration": "2:45",
+      "image": "assets/muerto en vida.webp",
+      "order": 8,
+      "src": "music/muerto en vida/ironia.mp3"
+    },
+    {
+      "id": "s9",
+      "title": "Lugar para dos",
+      "artist": "INDESENTES",
+      "album": "Muerto En Vida",
+      "category": "rock",
+      "duration": "4:22",
+      "image": "assets/muerto en vida.webp",
+      "order": 9,
+      "src": "music/muerto en vida/lugar para dos.mp3"
+    },
+    {
+      "id": "s10",
+      "title": "Mendigo",
+      "artist": "INDESENTES",
+      "album": "Muerto En Vida",
+      "category": "rock",
+      "duration": "2:05",
+      "image": "assets/muerto en vida.webp",
+      "order": 10,
+      "src": "music/muerto en vida/mendigo.mp3"
+    },
+    {
+      "id": "s11",
+      "title": "Donde nunca",
+      "artist": "INDESENTES",
+      "album": "Singles",
+      "category": "rock",
+      "duration": "4:27",
+      "image": "assets/logo-dark.webp",
+      "order": 11,
+      "src": "music/single/donde nunca.mp3"
+    },
+    {
+      "id": "s12",
+      "title": "Entre vacíos",
+      "artist": "INDESENTES",
+      "album": "Singles",
+      "category": "rock",
+      "duration": "3:53",
+      "image": "assets/logo-dark.webp",
+      "order": 12,
+      "src": "music/single/entre vacios.mp3"
+    },
+    {
+      "id": "s13",
+      "title": "El mismo aire",
+      "artist": "INDESENTES",
+      "album": "Singles",
+      "category": "rock",
+      "duration": "3:30",
+      "image": "assets/logo-dark.webp",
+      "order": 13,
+      "src": "music/single/el mismo aire.mp3"
+    }
+  ]
+}

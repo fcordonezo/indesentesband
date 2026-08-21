@@ -1,0 +1,83 @@
+{
+  "hero": {
+    "title": "Lo que somos",
+    "description": "INDESENTES combina intensidad rockera con melodías memorables, llevando una propuesta auténtica desde la ciudad hasta el escenario. Descubre nuevas canciones, próximos conciertos y momentos de la banda.",
+    "badges": [
+      "Punk Rock",
+      "Live Energy",
+      "Nuevos Shows"
+    ]
+  },
+  "metrics": {
+    "heading": "En movimiento",
+    "items": [
+      {
+        "value": "13",
+        "label": "Canciones de estudio"
+      },
+      {
+        "value": "25+",
+        "label": "Shows"
+      }
+    ]
+  },
+  "features": {
+    "heading": "Lo que estamos trayendo",
+    "items": [
+      {
+        "title": "Nuevas canciones",
+        "description": "Nuevas melodías que llegan al corazón y con la misma energía que nos caracteriza"
+      },
+      {
+        "title": "Puesta en escena con todo el power",
+        "description": "Presentaciones en vivo con presencia escénica y mucho rock'n roll"
+      },
+      {
+        "title": "Conexión con la comunidad",
+        "description": "Contenido que llega a cualquier público"
+      }
+    ]
+  },
+  "instagram": {
+    "heading": "Día a día",
+    "items": [
+      {
+        "image": "assets/days/ensayo - escenario en casa.webp",
+        "caption": "Ensayo - Escenario en Casa"
+      },
+      {
+        "image": "assets/days/ensayo - origen audio.webp",
+        "caption": "Ensayo - Origen Audio"
+      },
+      {
+        "image": "assets/days/ensayo - en casa.webp",
+        "caption": "Ensayo - En casa"
+      },
+      {
+        "image": "assets/days/ensayo - cuerdas.webp",
+        "caption": "Ensayo de cuerdas en formato unplugged"
+      },
+      {
+        "image": "assets/days/saliendo de ensayar.webp",
+        "caption": "Saliendo de ensayar"
+      },
+      {
+        "image": "assets/days/instrumentos.webp",
+        "caption": "Instrumentos"
+      }
+    ]
+  },
+  "media": {
+    "heading": "Escucha y mira",
+    "embeds": [
+      {
+        "title": "YouTube",
+        "src": "https://www.youtube.com/embed/eFvaKwHb8lo?si=8Zbt8K7f6E6hW6vS"
+      },
+      {
+        "title": "Instagram",
+        "src": "https://www.instagram.com/indesentesband/embed"
+      }
+    ]
+  }
+}

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="INDESENTES — punk rock en español, música, eventos y contacto directo con la banda."
+    />
+    <title>INDESENTES</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script defer src="app.js"></script>
+    <link rel="shortcut icon" href="assets/ico.webp">
+  </head>
+  <body>
+    <div class="page-shell">
+      <button
+        id="theme-toggle"
+        class="theme-toggle"
+        type="button"
+        aria-label="Cambiar tema"
+        title="Cambiar tema"
+      >
+        <span id="theme-icon" aria-hidden="true">☀</span>
+      </button>
+
+      <header class="site-header" id="site-header">
+        <div class="brand-mark">
+          <img id="brand-logo" src="assets/logo-dark.webp" alt="Logo INDESENTES" />
+        </div>
+        <div class="brand-copy">
+          <p class="eyebrow">PUNK ROCK</p>
+          <h1 id="site-title">INDESENTES</h1>
+          <p id="site-tagline" class="tagline"></p>
+          <div id="social-links" class="social-links" aria-label="Redes sociales"></div>
+        </div>
+      </header>
+
+      <nav class="main-nav" aria-label="Navegación principal">
+        <div class="nav-shell">
+          <ul id="nav-menu" class="nav-menu"></ul>
+        </div>
+      </nav>
+
+      <main id="page-content" class="page-content" aria-live="polite"></main>
+
+      <footer class="site-footer" id="site-footer"></footer>
+    </div>
+
+    <div id="image-modal" class="image-modal" role="dialog" aria-modal="true" aria-labelledby="image-modal-title" hidden>
+      <div class="image-modal-backdrop" data-image-modal-close></div>
+      <div class="image-modal-content">
+        <div class="image-modal-toolbar">
+          <h2 id="image-modal-title">Vista previa del flyer</h2>
+          <button type="button" class="image-modal-close" data-image-modal-close aria-label="Cerrar imagen" title="Cerrar imagen">×</button>
+        </div>
+        <img id="image-modal-preview" src="" alt="" />
+      </div>
+    </div>
+  </body>
+</html>

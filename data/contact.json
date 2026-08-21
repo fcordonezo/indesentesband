@@ -1,0 +1,14 @@
+{
+  "heading": "Contacto",
+  "info": {
+    "title": "Agendanos para tu evento",
+    "description": "Si buscas una banda de rock para conciertos, festivales, bares, salas o presentaciones especiales, ¡escribenos!.",
+    "email": "contacto@indesentesband.com",
+    "whatsapp": "+57 300 000 0000",
+    "city": "Bogotá, Colombia",
+    "googleFormUrl": "https://docs.google.com/forms/d/e/1FAIpQLSeWncYgXsjhIz_DDBdmvgIGjTmOs0TM4XVx9CxxqrpSwxQnmQ/viewform"
+  },
+  "form": {
+    "title": "Solicita una presentación"
+  }
+}

@@ -1,0 +1,426 @@
+{
+  "heading": "Eventos",
+  "subtitle": "Presentaciones, shows y espacios de encuentro",
+  "events": [
+    {
+      "name": "Weird Fest",
+      "type": "Concierto",
+      "venue": "Bbar, Cra 7 # 45 - 72, Bogotá",
+      "date": "07 de marzo",
+      "start": "2024-03-15T19:00:00-05:00",
+      "end": "2024-03-15T20:00:00-05:00",
+      "time": "19:00",
+      "price": "$15.000",
+      "description": "Toque en Bbar, Bogotá. Con bandas locales",
+      "flyers": [
+        "assets/events/2024/flyer - weird fest - 07 de marzo.jpg"
+      ],
+      "mapUrl": "https://maps.app.goo.gl/yS7DBSuWVEjQjm5L6"
+    },
+    {
+      "name": "Noche de rock y metal",
+      "type": "Toque",
+      "venue": "The Bukatarie Horror Restaurant",
+      "date": "22 de agosto",
+      "start": "2026-08-22T19:00:00-05:00",
+      "end": "2026-08-22T20:00:00-05:00",
+      "time": "19:00",
+      "price": "$10.000",
+      "description": "Noche de rock y metal con EOS Band e <strong>INDESENTES</strong>. Sábado 22 de agosto desde las 7:00 p.m. The Bukatarie Horror Restaurant, Bogotá. Centro Comercial Paseo Villa del Río, local 324. Entrada: $10.000. ¡No te lo pierdas!",
+      "flyers": [
+        "assets/events/2026/flyer - noche de rock y metal - 22 de agosto.jpeg"
+      ],
+      "mapUrl": "https://maps.app.goo.gl/5CM1rtDynfKtYwVA8"
+    },
+    {
+      "name": "Audiciones Rock a la Distri",
+      "type": "Audición",
+      "venue": "Calle 72 # 20 - 28, Bogotá. Diagonal estación Transmilenio Calle 72",
+      "date": "21 de septiembre",
+      "start": "2018-09-21T12:00:00-05:00",
+      "end": "2018-09-21T22:00:00-05:00",
+      "time": "12:00",
+      "price": "$5.000",
+      "description": "Audiciones para el festival Rock a la Distri.",
+      "flyers": [
+        "assets/events/2018/flyer - audiciones rock a la distri - 21 de septiembre.jpg"
+      ],
+      "mapUrl": "https://maps.app.goo.gl/1hDsUU1H15gqgnuW9"
+    },
+    {
+      "name": "State animal - Casa de esperanza 'Salvando vidas'",
+      "type": "Toque benéfico",
+      "venue": "Moombah Club, Calle 65 # 13 - 15",
+      "date": "22 de septiembre",
+      "start": "2018-09-22T20:00:00-05:00",
+      "end": "2018-09-22T23:00:00-05:00",
+      "time": "20:00",
+      "price": "$15.000",
+      "description": "Toque en Moombah Club, Bogotá. Evento a beneficio de la fundación Casa de Esperanza 'Salvando vidas'.",
+      "flyers": [
+        "assets/events/2018/flyer - state animal - 22 de septiembre.jpg"
+      ],
+      "mapUrl": "https://maps.app.goo.gl/nNbbZ3cmQMR1o7YP6"
+    },
+    {
+      "name": "Rock animal",
+      "type": "Toque benéfico",
+      "venue": "Calle 60 # 66 - 55 sur, Madelena, Bogotá",
+      "date": "30 de junio",
+      "start": "2018-06-30T20:00:00-05:00",
+      "end": "2018-06-30T23:00:00-05:00",
+      "time": "20:00",
+      "price": "$5.000",
+      "description": "Toque en apoyo a South Side",
+      "flyers": [
+        "assets/events/2018/flyer - rock animal - 30 de junio.jpg"
+      ],
+      "mapUrl": "https://maps.app.goo.gl/XK41rJAGBhXKQMqh8"
+    },
+    {
+      "name": "Toque en Kings Golden Bar",
+      "type": "Toque",
+      "venue": "Kings Golden Bar",
+      "date": "28 de mayo",
+      "start": "2017-05-28T20:00:00-05:00",
+      "end": "2017-05-28T23:00:00-05:00",
+      "time": "20:00",
+      "price": "$10.000",
+      "description": "Toque en Kings Golden Bar, Bogotá.",
+      "flyers": [
+        "assets/events/2017/flyer - kings golden bar - 28 de mayo.jpg"
+      ],
+      "mapUrl": "https://maps.app.goo.gl/kphSzVYPLMStdzqp8"
+    },
+    {
+      "name": "Toque en Pixel Bar",
+      "type": "Toque",
+      "venue": "Pixel Bar",
+      "date": "22 de abril",
+      "start": "2017-04-22T19:00:00-05:00",
+      "end": "2017-04-22T22:00:00-05:00",
+      "time": "19:00",
+      "price": "$5.000",
+      "description": "Toque en Pixel Bar, Bogotá.",
+      "flyers": [
+        "assets/events/2017/flyer - pixel bar - 22 de abril.jpg"
+      ],
+      "mapUrl": "https://maps.app.goo.gl/fhiqNiB2m4zcUNL56"
+    },
+    {
+      "name": "Al Gratín Fest",
+      "type": "Toque",
+      "venue": "Pixel Bar",
+      "date": "30 de diciembre",
+      "start": "2016-12-30T19:00:00-05:00",
+      "end": "2016-12-30T22:00:00-05:00",
+      "time": "19:00",
+      "price": "Gratis",
+      "description": "Toque en el festival 'Al gratín fest' en el Pixel Bar, Bogotá.",
+      "flyers": [
+        "assets/events/2016/flyer - al gratin fest - 30 de diciembre.jpg"
+      ],
+      "mapUrl": "https://maps.app.goo.gl/fhiqNiB2m4zcUNL56"
+    },
+    {
+      "name": "Rock Christmas Fest",
+      "type": "Festival",
+      "venue": "Centro de cultura Kirius XIX",
+      "date": "11 de diciembre",
+      "start": "2016-12-11T19:00:00-05:00",
+      "end": "2016-12-11T22:00:00-05:00",
+      "time": "19:00",
+      "price": "Gratis*",
+      "description": "Toque en el festival 'Rock Christmas Fest' en el Centro de cultura Kirius XIX, Bogotá. Entrada canjeable por alimentos no perecederos.",
+      "flyers": [
+        "assets/events/2016/flyer - rock christmas fest - 11 de diciembre.jpg"
+      ],
+      "mapUrl": "https://maps.app.goo.gl/QRZHoZkeE2XuJdSC8"
+    },
+    {
+      "name": "Alterna Estudio - Noches de ensayadero",
+      "type": "Toque",
+      "venue": "Alterna Estudio",
+      "date": "02 de diciembre",
+      "start": "2016-12-02T19:00:00-05:00",
+      "end": "2016-12-02T22:00:00-05:00",
+      "time": "19:00",
+      "price": "$5.000",
+      "description": "Toque en Alterna Estudio, Bogotá. Noches de ensayadero.",
+      "flyers": [
+        "assets/events/2016/flyer - noches de ensayadero - 02 de diciembre.jpg"
+      ],
+      "mapUrl": "https://maps.app.goo.gl/s1FBeKMYGLxaWS3T7"
+    },
+    {
+      "name": "Unión Rock Festival 2016 - 5° aniversario",
+      "type": "Toque",
+      "venue": "Alterna Estudio",
+      "date": "30 de septiembre",
+      "start": "2016-09-30T14:00:00-05:00",
+      "end": "2016-09-30T22:00:00-05:00",
+      "time": "20:00",
+      "price": "$5.000",
+      "description": "Unión Rock Festival 2016 - 5° aniversario. Rock'n Sumercé",
+      "flyers": [
+        "assets/events/2016/flyer - union rock festival 2016 - 30 de septiembre.jpg"
+      ],
+      "mapUrl": "https://maps.app.goo.gl/M46JYSUVWupxkX1b6"
+    },
+    {
+      "name": "Concierto pro fondos - Virtud y Honor",
+      "type": "Toque benéfico",
+      "venue": "Teatro Acto Latino",
+      "date": "15 de mayo",
+      "start": "2016-05-15T14:00:00-05:00",
+      "end": "2016-05-15T22:00:00-05:00",
+      "time": "20:00",
+      "price": "$15.000*",
+      "description": "Concierto pro fondos - Virtud y Honor. $10.000 preventa y $15.000 en taquilla.",
+      "flyers": [
+        "assets/events/2016/flyer - virtud y honor - 15 de mayo.jpg"
+      ],
+      "mapUrl": "https://maps.app.goo.gl/V62WKHF2FAEwZ8de7"
+    },
+    {
+      "name": "Union Fest",
+      "type": "Toque",
+      "venue": "Teatro Acto Latino",
+      "date": "28 de febrero",
+      "start": "2015-02-28T13:00:00-05:00",
+      "end": "2015-02-28T22:00:00-05:00",
+      "time": "20:00",
+      "price": "$19.000*",
+      "description": "Lo nuevo y lo viejo de diferentes escenas. $15.000 preventa y $19.000 en taquilla.",
+      "flyers": [
+        "assets/events/2015/flyer - union fest - 28 de febrero.jpg"
+      ],
+      "mapUrl": "https://maps.app.goo.gl/V62WKHF2FAEwZ8de7"
+    },
+    {
+      "name": "Ciclo de conciertos 2014 - Bogotá Ciudad Rock",
+      "type": "Toque",
+      "venue": "La estación del Expresso",
+      "date": "13 de septiembre",
+      "start": "2014-09-13T18:30:00-05:00",
+      "end": "2014-09-13T22:00:00-05:00",
+      "time": "20:00",
+      "price": "$10.000",
+      "description": "Ciclo de conciertos 2014 - Bogotá Ciudad Rock.",
+      "flyers": [
+        "assets/events/2014/flyer - bogota ciudad rock - 13 de septiembre.jpg"
+      ],
+      "mapUrl": "https://maps.app.goo.gl/EUkHc2ABjxAqD4ft7"
+    },
+    {
+      "name": "Indesentes en vivo - Universidad Nacional de Colombia",
+      "type": "Toque",
+      "venue": "Universidad Nacional de Colombia, Sede Bogotá - Auditorio Virginia Gutiérrez",
+      "date": "24 de abril",
+      "start": "2014-04-24T13:30:00-05:00",
+      "end": "2014-04-24T15:00:00-05:00",
+      "time": "13:00",
+      "price": "Gratis",
+      "description": "Indesentes en vivo - Universidad Nacional de Colombia.",
+      "flyers": [
+        "assets/events/2014/flyer - indesentes en vivo - 24 de abril.jpg"
+      ],
+      "mapUrl": "https://maps.app.goo.gl/EUkHc2ABjxAqD4ft7"
+    },
+    {
+      "name": "Indesentes + Xector 19",
+      "type": "Toque",
+      "venue": "Melodías Video Bar",
+      "date": "21 de diciembre",
+      "start": "2013-12-21T19:00:00-05:00",
+      "end": "2013-12-21T22:00:00-05:00",
+      "time": "19:00",
+      "price": "$5.000",
+      "description": "Indesentes junto con Xector 19 en Melodías Video Bar, Bogotá.",
+      "flyers": [
+        "assets/events/2013/flyer - indesentes + xector 19 - 21 de diciembre.jpg"
+      ],
+      "mapUrl": "https://maps.app.goo.gl/xf6GkccUxkSEAWWU8"
+    },
+    {
+      "name": "Indesentes + Asteroids + Sangre Libre",
+      "type": "Toque",
+      "venue": "Centro Comercial Madelena - Bar Cioran",
+      "date": "16 de noviembre",
+      "start": "2013-11-16T19:00:00-05:00",
+      "end": "2013-11-16T22:00:00-05:00",
+      "time": "19:00",
+      "price": "$5.000",
+      "description": "Indesentes junto con Asteroids y Sangre Libre en Centro Comercial Madelena - Bar Cioran, Bogotá.",
+      "flyers": [
+        "assets/events/2013/flyer - indesentes + asteroids + sangre libre - 16 de noviembre.jpg"
+      ],
+      "mapUrl": "https://maps.app.goo.gl/xf6GkccUxkSEAWWU8"
+    },
+    {
+      "name": "Al gratín como nos gusta - Volúmen III",
+      "type": "Toque",
+      "venue": "Sonido Natural Café Bar",
+      "date": "15 de septiembre",
+      "start": "2012-09-15T19:00:00-05:00",
+      "end": "2012-09-15T22:00:00-05:00",
+      "time": "19:00",
+      "price": "Gratis*",
+      "description": "Al gratín como nos gusta - Volúmen III. Entrada canjeable por alimentos no perecederos.",
+      "flyers": [
+        "assets/events/2012/flyer - al gratin - 15 de septiembre.jpg"
+      ],
+      "mapUrl": "https://maps.app.goo.gl/c935NW1bhQwTyrBY8"
+    },
+    {
+      "name": "New Fight Fest 1",
+      "type": "Toque",
+      "venue": "Boogaloop Club",
+      "date": "12 de noviembre",
+      "start": "2011-11-12T12:00:00-05:00",
+      "end": "2011-11-12T22:00:00-05:00",
+      "time": "16:00",
+      "price": "$15.000*",
+      "description": "New Fight Fest 1. $12.000 en preventa, $15.000 en taquilla.",
+      "flyers": [
+        "assets/events/2011/flyer - new fight fest 1 - 12 de noviembre.jpg"
+      ],
+      "mapUrl": "https://maps.app.goo.gl/3Paqmu7AKqt3AqLf8"
+    },
+    {
+      "name": "Skate Punk Fest",
+      "type": "Toque",
+      "venue": "Boogaloop Club",
+      "date": "26 de noviembre",
+      "start": "2011-11-26T10:00:00-05:00",
+      "end": "2011-11-26T22:00:00-05:00",
+      "time": "16:00",
+      "price": "$20.000*",
+      "description": "skate punk fest. $16.000 hasta el 26 de octubre; $18.000 hasta el 6 de noviembre; $20.000 hasta el día del evento.",
+      "flyers": [
+        "assets/events/2011/flyer - skate punk fest - 26 de noviembre.jpg"
+      ],
+      "mapUrl": "https://maps.app.goo.gl/3Paqmu7AKqt3AqLf8"
+    },
+    {
+      "name": "Skate Punk Fest",
+      "type": "Toque",
+      "venue": "Parquing Club - Calle 84 # 13 - 66, Bogotá",
+      "date": "14 de mayo",
+      "start": "2011-05-14T10:00:00-05:00",
+      "end": "2011-05-14T22:00:00-05:00",
+      "time": "16:00",
+      "price": "$26.000*",
+      "description": "skate punk fest. $22.000 hasta el 21 de marzo; $24.000 hasta el 22 de abril; $26.000 hasta el día del evento.",
+      "flyers": [
+        "assets/events/2011/flyer - skate punk fest - 26 de noviembre.jpg"
+      ],
+      "mapUrl": "https://maps.app.goo.gl/edcYgaURv7ERR2Kz7"
+    },
+    {
+      "name": "Teatro Acto Latino - Tributo a RUFIO",
+      "type": "Toque",
+      "venue": "Carrera 16 # 58A - 55",
+      "date": "26 de febrero",
+      "start": "2011-02-26T12:00:00-05:00",
+      "end": "2011-02-26T22:00:00-05:00",
+      "time": "16:00",
+      "price": "$10.000*",
+      "description": "Toque en Teatro Acto Latino. $8.000 en preventa; $10.000 en taquilla.",
+      "flyers": [
+        "assets/events/2011/flyer - teatro acto latino - 26 de febrero.jpg"
+      ],
+      "mapUrl": "https://maps.app.goo.gl/pPJBm9GgFASFz7qv8"
+    },
+    {
+      "name": "Al gratín como nos gusta",
+      "type": "Toque",
+      "venue": "Bar Dragon Fly",
+      "date": "8 de mayo",
+      "start": "2010-05-08T19:00:00-05:00",
+      "end": "2010-05-08T22:00:00-05:00",
+      "time": "19:00",
+      "price": "Gratis",
+      "description": "Al gratín como nos gusta. Junto con Xector 19.",
+      "flyers": [
+        "assets/events/2010/flyer - al gratin como nos gusta - 8 de mayo.jpg"
+      ],
+      "mapUrl": "https://maps.app.goo.gl/pXJsxafShLTXweTw5"
+    },
+    {
+      "name": "Concierto Fenómenos del Rock",
+      "type": "Toque",
+      "venue": "Destroyer Rockcafe Bar",
+      "date": "13 de junio",
+      "start": "2010-06-13T14:00:00-05:00",
+      "end": "2010-06-13T22:00:00-05:00",
+      "time": "14:00",
+      "price": "$8.000",
+      "description": "Concierto Fenómenos del Rock.",
+      "flyers": [
+        "assets/events/2010/flyer - concierto fenomenos del rock - 13 de junio.jpg"
+      ],
+      "mapUrl": "https://maps.app.goo.gl/XibsgyjXRx9U8Zxf7"
+    },
+    {
+      "name": "De Todito Toketon Fest",
+      "type": "Toque",
+      "venue": "Pachamama Café",
+      "date": "13 de marzo",
+      "start": "2010-03-13T14:00:00-05:00",
+      "end": "2010-03-13T22:00:00-05:00",
+      "time": "14:00",
+      "price": "$8.000",
+      "description": "De Todito Toketon Fest.",
+      "flyers": [
+        "assets/events/2010/flyer - de todito toketon fest - 13 de marzo.jpg"
+      ],
+      "mapUrl": "https://maps.app.goo.gl/t33EraLHdmG9NNS58"
+    },
+    {
+      "name": "Noise Core Fest",
+      "type": "Toque",
+      "venue": "",
+      "date": "17 de octubre",
+      "start": "2010-10-17T14:00:00-05:00",
+      "end": "2010-10-17T22:00:00-05:00",
+      "time": "14:00",
+      "price": "Gratis",
+      "description": "Noise Core Fest.",
+      "flyers": [
+        "assets/events/2010/flyer - noise core fest - 17 de octubre.jpg"
+      ],
+      "mapUrl": ""
+    },
+    {
+      "name": "Karrousel II",
+      "type": "Toque",
+      "venue": "Boogaloop Club",
+      "date": "27 de noviembre",
+      "start": "2010-11-27T10:30:00-05:00",
+      "end": "2010-11-27T22:00:00-05:00",
+      "time": "14:00",
+      "price": "$17.000*",
+      "description": "Karrousel II. $13.000 hasta el 6 de noviembre; $15.000 hasta el 26 de noviembre; $17.000 hasta el evento.",
+      "flyers": [
+        "assets/events/2010/flyer - karrousel ii - 27 de noviembre.jpg"
+      ],
+      "mapUrl": "https://maps.app.goo.gl/3Paqmu7AKqt3AqLf8"
+    },
+    {
+      "name": "Parque Nacional Toke Acustico",
+      "type": "Toque",
+      "venue": "Parque Nacional, Bogotá",
+      "date": "14 de agosto",
+      "start": "2010-08-14T12:00:00-05:00",
+      "end": "2010-08-14T22:00:00-05:00",
+      "time": "14:00",
+      "price": "Gratis*",
+      "description": "Parque Nacional Toke Acustico. Apoya llevando ropa en buen estado o alimentos no perecederos.",
+      "flyers": [
+        "assets/events/2010/flyer - parque nacional toque acustico - 14 de agosto.jpg"
+      ],
+      "mapUrl": "https://maps.app.goo.gl/isxNaA2kUyQcxKUm7"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+I need your help building a website for my rock band, INDESENTES, with the following features:
+- It must be built using vanilla JavaScript (i.e., only HTML, CSS, JS, and JSON). No JS frameworks like Vue, React, or anything like that.
+- It must be fully responsive.
+- It must be full in spanish.
+- Integrations with external sources must be done without using API keys. They should be in the form of public APIs or similar. 
+- The "dynamic" content of the page, such as i18n text, the tracklist with titles, links, and everything else necessary, should be in JSON structures.
+- It must be a Single-Page Application (SPA). This means that when you click on a menu item, the previous content will stop rendering and the new content will begin rendering, while the header will continue rendering.
+- It must have dark and light modes depending on the device's configuration and a floating toggle button in the upper right corner. When the mode is dark, the button should display a sun icon, and when it's light, it should display a moon.
+- A different image of the band's logo will load depending on whether it's in dark or light mode.
+- The design should be clean, clear, and elegant.
+- I want the structure to have a header, then a navbar, then the body, and then the footer.
+- In the header, I want to place an image of my band's logo on the left side. To the right of this image will be the title, which will be the band's name. Below the title, there will be a short descriptive text, and further down, icons for social media (IG, FB, Email).
+- I want the navbar to be below the header, and when scrolling down to the top of the page, it should be fixed to the top of the screen. This navbar contains the menus: Home, Music, Events, About Us, and Contact.
+- The body will depend on the selected menu in the navbar:
+- Home: I haven't decided on this content yet. You can include some example content sections that might be useful for the band, such as Instagram feeds and posts, Spotify, YouTube, etc.
+- Music: In this menu, I want an integrated player that can play songs in .mp3 or .wav format. It should have basic functions like play, pause, next, previous, an interactive progress bar, etc., and a list of songs on the side, grouped by categories such as category, album, "all," or similar. I also want to be able to change the order of the songs so that the web client sees them. When one song finishes, the next one plays automatically. All of this should be in JSON structures that can be consumed by JavaScript. For each entry, I want to be able to include the URL or path of an image for each song so that it's displayed on screen while the song is playing. If there's no image, a neutral background should be displayed.
+- Events: In this menu, I want to be able to display all the information about new events (concerts, etc.). Useful information such as the event name, venue name, date and time, ticket price (or "Free" if there is no cover charge), a Maps integration so that a clickable button redirects to the exact location on Google Maps, one or more images of the flyer(s), and any other relevant information. This should be in a separate JSON structure. If possible, another button should redirect to Google Calendar to create an event in the client's calendar with the pre-filled information.
+- About Us: Information about the band, its members, and any other relevant information.
+- Contact: A brief description of the events we cover, venues, and useful contact information. Also, a small form with fields such as sender's name, email address, WhatsApp contact (optional), event description, etc. This information should be automatically sent to the band's configured email address. If immediate delivery is not possible, at least pre-fill the information with a "mailto" address.
+- Finally, the band's copyright information must be included in the footer.
