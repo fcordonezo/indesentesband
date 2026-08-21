@@ -31,27 +31,35 @@ document.addEventListener("DOMContentLoaded", initApp);
 
 async function initApp() {
   try {
-    const [site, home, music, events, about, contact] = await Promise.all([
+    const [site, home] = await Promise.all([
       fetch("data/site.json").then((res) => res.json()),
       fetch("data/home.json").then((res) => res.json()),
-      fetch("data/music.json").then((res) => res.json()),
-      fetch("data/events.json").then((res) => res.json()),
-      fetch("data/about.json").then((res) => res.json()),
-      fetch("data/contact.json").then((res) => res.json()),
     ]);
 
-    state.data = { site, home, music, events, about, contact };
+    state.data = { site, home, music: null, events: null, about: null, contact: null };
     bindThemeControls();
-    bindAudioEvents();
     bindImageModal();
-    startEventClock();
     renderHeader();
     renderNav();
     renderFooter();
     renderSection(getSectionFromHash() || "home", false);
     window.addEventListener("hashchange", () => {
-      renderSection(getSectionFromHash() || "home", false);
+      const section = getSectionFromHash() || "home";
+      if (section === "home" || state.data[section]) renderSection(section, false);
     });
+
+    const [music, events, about, contact] = await Promise.all([
+      fetch("data/music.json").then((res) => res.json()),
+      fetch("data/events.json").then((res) => res.json()),
+      fetch("data/about.json").then((res) => res.json()),
+      fetch("data/contact.json").then((res) => res.json()),
+    ]);
+    state.data = { site, home, music, events, about, contact };
+    bindAudioEvents();
+    startEventClock();
+
+    const requestedSection = getSectionFromHash();
+    if (requestedSection && requestedSection !== "home") renderSection(requestedSection, false);
   } catch (error) {
     console.error("No se pudo cargar el contenido JSON:", error);
     const content = document.getElementById("page-content");
@@ -126,6 +134,8 @@ function getSectionFromHash() {
 }
 
 function renderSection(section, updateHash = true) {
+  if (section !== "home" && (!state.data || !state.data[section])) return;
+
   state.currentSection = section;
   if (updateHash && window.location.hash !== `#${section}`) {
     window.history.pushState({}, "", `#${section}`);
@@ -188,6 +198,7 @@ function renderHome() {
                 <iframe
                   src="${embed.src}"
                   title="${embed.title}"
+                  loading="lazy"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                   allowfullscreen
                 ></iframe>
@@ -228,6 +239,7 @@ function renderHome() {
                 class="instagram-embed"
                 src="${home.instagram.feedEmbed}"
                 title="Instagram de INDESENTES"
+                loading="lazy"
                 allowfullscreen
                 scrolling="yes"
                 frameborder="0"
@@ -241,7 +253,7 @@ function renderHome() {
       .map(
         (item) => `
               <article class="instagram-card">
-                <img src="${item.image}" alt="${item.caption}" />
+                <img src="${item.image}" alt="${item.caption}" loading="lazy" decoding="async" />
                 <div class="caption">${item.caption}</div>
               </article>
             `
