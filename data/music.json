@@ -16,14 +16,14 @@
     },
     {
       "id": "s2",
-      "title": "Pasa el tiempo",
+      "title": "Paso el tiempo",
       "artist": "INDESENTES",
       "album": "Muerto En Vida",
       "category": "rock",
       "duration": "3:12",
       "image": "assets/muerto en vida.webp",
       "order": 2,
-      "src": "music/muerto en vida/pasa el tiempo.mp3"
+      "src": "music/muerto en vida/paso el tiempo.mp3"
     },
     {
       "id": "s3",
@@ -134,17 +134,6 @@
       "image": "assets/logo-dark.webp",
       "order": 12,
       "src": "music/single/entre vacios.mp3"
-    },
-    {
-      "id": "s13",
-      "title": "El mismo aire",
-      "artist": "INDESENTES",
-      "album": "Singles",
-      "category": "rock",
-      "duration": "3:30",
-      "image": "assets/logo-dark.webp",
-      "order": 13,
-      "src": "music/single/el mismo aire.mp3"
     }
   ]
 }
