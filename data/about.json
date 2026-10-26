@@ -47,7 +47,8 @@
         "role": "Batería",
         "image": "assets/members/cris.webp",
         "social media": [
-          { "name": "Instagram", "url": "https://www.instagram.com/criss_camm" }
+          { "name": "Instagram", "url": "https://www.instagram.com/criss_camm" },
+          { "name": "Facebook", "url": "https://www.facebook.com/aguacatico" }
         ]
       }
     ]
