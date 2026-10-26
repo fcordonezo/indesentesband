@@ -11,6 +11,8 @@ const state = {
     loadedTrackId: null,
     isPlaying: false,
     volume: 0.8,
+    volumeBeforeMute: 0.8,
+    isMuted: false,
     repeat: false,
     shuffle: false,
     accordionState: null,
@@ -321,20 +323,22 @@ function renderMusic() {
 
           <div class="player-controls">
             <div class="control-row">
-              <button class="control-button" type="button" data-action="prev" aria-label="Anterior">⏮</button>
-              <button class="control-button primary" type="button" data-action="toggle" aria-label="Reproducir/pausar">${state.music.isPlaying ? "❚❚" : "▶"}</button>
-              <button class="control-button" type="button" data-action="next" aria-label="Siguiente">⏭</button>
+              <button class="control-button" type="button" data-action="prev" aria-label="Anterior"><img src="assets/ico/backward.svg" alt="" /></button>
+              <button class="control-button primary" type="button" data-action="toggle" aria-label="Reproducir/pausar"><img src="assets/ico/${state.music.isPlaying ? "pause.svg" : "play.svg"}" alt="" /></button>
+              <button class="control-button" type="button" data-action="next" aria-label="Siguiente"><img src="assets/ico/forward.svg" alt="" /></button>
             </div>
 
             <div class="player-tools">
               <div class="volume-control">
-                <label for="volume-range">Vol.</label>
+                <button id="volume-mute" class="volume-button" type="button" aria-label="${state.music.isMuted ? "Activar sonido" : "Silenciar"}" title="${state.music.isMuted ? "Activar sonido" : "Silenciar"}">
+                  <img src="assets/ico/${state.music.isMuted ? "mute.svg" : "unmute.svg"}" alt="" />
+                </button>
                 <input id="volume-range" type="range" min="0" max="100" step="1" value="${Math.round(state.music.volume * 100)}" aria-label="Volumen" />
               </div>
 
               <div class="playback-toggle-group">
-                <button class="control-button ${state.music.repeat ? "active" : ""}" type="button" data-action="repeat" aria-label="Repetir canción">${getRepeatIcon()}</button>
-                <button class="control-button ${state.music.shuffle ? "active" : ""}" type="button" data-action="shuffle" aria-label="Reproducción aleatoria">${getShuffleIcon()}</button>
+                <button class="control-button ${state.music.repeat ? "active" : ""}" type="button" data-action="repeat" aria-label="Repetir canción"><img src="assets/ico/repeat.svg" alt="" /></button>
+                <button class="control-button ${state.music.shuffle ? "active" : ""}" type="button" data-action="shuffle" aria-label="Reproducción aleatoria"><img src="assets/ico/shuffle.svg" alt="" /></button>
               </div>
             </div>
 
@@ -571,9 +575,41 @@ function bindMusicEvents() {
   if (volumeSlider) {
     volumeSlider.addEventListener("input", (event) => {
       state.music.volume = Number(event.target.value) / 100;
+      state.music.volumeBeforeMute = state.music.volume;
+      state.music.isMuted = false;
       state.audio.volume = state.music.volume;
+      updateVolumeMuteButton();
     });
   }
+
+  const muteButton = document.getElementById("volume-mute");
+  if (muteButton) {
+    muteButton.addEventListener("click", toggleVolumeMute);
+  }
+}
+
+function toggleVolumeMute() {
+  if (state.music.isMuted) {
+    state.music.isMuted = false;
+    state.music.volume = state.music.volumeBeforeMute || 0.8;
+  } else {
+    state.music.volumeBeforeMute = state.music.volume;
+    state.music.isMuted = true;
+    state.music.volume = 0;
+  }
+
+  state.audio.volume = state.music.volume;
+  const volumeSlider = document.getElementById("volume-range");
+  if (volumeSlider) volumeSlider.value = String(Math.round(state.music.volume * 100));
+  updateVolumeMuteButton();
+}
+
+function updateVolumeMuteButton() {
+  const muteButton = document.getElementById("volume-mute");
+  if (!muteButton) return;
+  muteButton.innerHTML = `<img src="assets/ico/${state.music.isMuted ? "mute.svg" : "unmute.svg"}" alt="" />`;
+  muteButton.setAttribute("aria-label", state.music.isMuted ? "Activar sonido" : "Silenciar");
+  muteButton.title = state.music.isMuted ? "Activar sonido" : "Silenciar";
 }
 
 function bindAudioEvents() {
@@ -685,7 +721,7 @@ function setAudioTrack(song) {
   const totalTime = document.getElementById("total-time");
   if (totalTime) totalTime.textContent = track.duration || "0:00";
   const toggleButton = document.querySelector('[data-action="toggle"]');
-  if (toggleButton) toggleButton.textContent = state.music.isPlaying ? "❚❚" : "▶";
+  if (toggleButton) toggleButton.innerHTML = `<img src="assets/ico/${state.music.isPlaying ? "pause.svg" : "play.svg"}" alt="" />`;
 }
 
 function playAudio() {
@@ -696,7 +732,7 @@ function playAudio() {
     updateMediaSessionPlaybackState();
     console.warn("Autoplay bloqueado hasta la interacción del usuario");
   });
-  if (toggleButton) toggleButton.textContent = "❚❚";
+  if (toggleButton) toggleButton.innerHTML = '<img src="assets/ico/pause.svg" alt="" />';
   updateMediaSessionPlaybackState();
 }
 
@@ -704,7 +740,7 @@ function pauseAudio() {
   state.audio.pause();
   state.music.isPlaying = false;
   const toggleButton = document.querySelector('[data-action="toggle"]');
-  if (toggleButton) toggleButton.textContent = "▶";
+  if (toggleButton) toggleButton.innerHTML = '<img src="assets/ico/play.svg" alt="" />';
   updateMediaSessionPlaybackState();
 }
 
@@ -1066,14 +1102,16 @@ function renderEventPriceMeta(event, status) {
 }
 
 function getShareIcon(name) {
-  const icons = {
-    facebook: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 8h3V4h-3c-3.3 0-5 2-5 5v2H6v4h3v6h4v-6h3l1-4h-4V9c0-.8.4-1 1-1z"></path></svg>',
-    instagram: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4.2"></circle><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"></circle></svg>',
-    whatsapp: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 11.6a8.7 8.7 0 0 1-12.9 7.6L3.5 20.7l1.5-4a8.7 8.7 0 1 1 15.5-5.1z" fill="none" stroke="currentColor"></path><path d="M8.2 7.2c-.2-.5-.4-.5-.7-.5h-.6c-.2 0-.5.1-.7.3-.2.3-.9 1-1 2.3-.1 1.3 1.1 3.1 1.2 3.3.1.2 2.2 3.5 5.5 4.7 2.7 1 3.2.8 3.8.7.6-.1 2-.8 2.3-1.6.3-.8.3-1.5.2-1.6-.1-.2-.3-.3-.7-.5l-2-.9c-.3-.1-.5-.2-.7.2l-.8 1c-.2.2-.4.2-.7.1-1-.4-1.8-.8-2.6-1.4-.7-.5-1.1-1.1-1.2-1.4-.1-.3.2-.5.3-.7l.5-.6c.2-.2.2-.4.3-.6.1-.2 0-.4-.1-.6l-.9-2.2z"></path></svg>',
-    x: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.4 3H22l-7.8 8.9L23.2 21h-7l-5.5-6.8L4.3 21H.7l8.4-9.6L.4 3h7.1l5 6.2L18.4 3zm-1.3 16h2L6.4 4.8H4.2L17.1 19z"></path></svg>',
-    copy: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="11" height="11" rx="2"></rect><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"></path></svg>'
+  const iconFiles = {
+    facebook: "facebook.svg",
+    instagram: "instagram.svg",
+    whatsapp: "whatsapp.svg",
+    x: "x.svg",
+    twitter: "x.svg",
   };
-  return icons[name] || icons.copy;
+  const iconFile = iconFiles[name];
+  if (!iconFile) return `<img src="assets/ico/link.svg" alt="" />`;
+  return `<img src="assets/ico/${iconFile}" alt="" />`;
 }
 
 function renderEventShareLinks(event, compact = false) {
@@ -1127,7 +1165,7 @@ function renderEventDetail(event, now) {
           </div>
           <p>${event.description}</p>
           <div class="event-detail-share">
-            <span class="album-label">Compartir evento</span>
+            <span class="album-label">Compartir</span>
             ${renderEventShareLinks(event)}
           </div>
         </article>
@@ -1644,7 +1682,8 @@ function applyTheme() {
 
   const icon = document.getElementById("theme-icon");
   if (icon) {
-    icon.textContent = state.theme === "dark" ? "☀" : "☾";
+    const iconName = state.theme === "dark" ? "sun.svg" : "moon.svg";
+    icon.innerHTML = `<img src="assets/ico/${iconName}" alt="" />`;
   }
 
   const logo = document.getElementById("brand-logo");
@@ -1655,50 +1694,25 @@ function applyTheme() {
 
 function getSocialIcon(iconName) {
   const normalizedIconName = iconName.trim().toLowerCase();
-  const icons = {
-    instagram: `
-      <svg viewBox="0 0 24 24" aria-hidden="true">
-        <rect x="3" y="3" width="18" height="18" rx="5"></rect>
-        <circle cx="12" cy="12" r="4.2"></circle>
-        <circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"></circle>
-      </svg>
-    `,
-    facebook: `
-      <svg viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M14 8h3V4h-3c-3.3 0-5 2-5 5v2H6v4h3v6h4v-6h3l1-4h-4V9c0-.8.4-1 1-1z"></path>
-      </svg>
-    `,
-    email: `
-      <svg viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M4 7h16v10H4z"></path>
-        <path d="M4 8l8 6 8-6"></path>
-      </svg>
-    `,
+  const iconFiles = {
+    instagram: "instagram.svg",
+    facebook: "facebook.svg",
+    email: "mail.svg",
+    mail: "mail.svg",
+    whatsapp: "whatsapp.svg",
+    x: "x.svg",
+    twitter: "x.svg",
   };
-
-  return icons[normalizedIconName] || icons.email;
+  const iconFile = iconFiles[normalizedIconName] || "mail.svg";
+  return `<img src="assets/ico/${iconFile}" alt="" />`;
 }
 
 function getRepeatIcon() {
-  return `
-    <svg class="player-icon" viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M5 7.5h11.5A3.5 3.5 0 0 1 20 11v.3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
-      <path d="M18 4.5l2.5 2.5L18 9.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
-      <path d="M19 16.5H7.5A3.5 3.5 0 0 1 4 13v-.3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
-      <path d="M6 19.5L3.5 17 6 14.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
-    </svg>
-  `;
+  return '<img src="assets/ico/repeat.svg" alt="" />';
 }
 
 function getShuffleIcon() {
-  return `
-    <svg class="player-icon" viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M4.5 7.5h3.1c1.1 0 2.1.5 2.8 1.4l1.7 2.2c.7.9 1.7 1.4 2.8 1.4h4.4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
-      <path d="M17.5 5.5l3 2-3 2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
-      <path d="M4.5 16.5h3.1c1.1 0 2.1-.5 2.8-1.4l1.7-2.2c.7-.9 1.7-1.4 2.8-1.4h4.4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
-      <path d="M17.5 18.5l3-2-3-2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
-    </svg>
-  `;
+  return '<img src="assets/ico/shuffle.svg" alt="" />';
 }
 
 function formatTime(seconds) {

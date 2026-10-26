@@ -531,6 +531,29 @@ body.theme-light .main-nav {
   accent-color: var(--primary);
 }
 
+.volume-button {
+  width: 42px;
+  height: 42px;
+  flex: 0 0 42px;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: var(--button-bg);
+  color: var(--text-strong);
+  display: inline-grid;
+  place-items: center;
+  padding: 0;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+}
+
+.volume-button:hover,
+.volume-button:focus-visible {
+  transform: translateY(-2px);
+  background: var(--button-hover);
+  border-color: rgba(255, 179, 71, 0.45);
+  outline: none;
+}
+
 .playback-toggle-group {
   display: flex;
   align-items: center;
@@ -1637,7 +1660,33 @@ body.theme-light .theme-toggle {
 }
 
 #theme-icon {
-  font-size: 1.35rem;
+  display: grid;
+  place-items: center;
+}
+
+#theme-icon img,
+.volume-button img,
+.control-button img,
+.social-link img,
+.event-share-link img {
+  width: 18px;
+  height: 18px;
+  display: block;
+  object-fit: contain;
+  transition: filter 0.2s ease;
+}
+
+body.theme-dark #theme-icon img,
+body.theme-dark .volume-button img,
+body.theme-dark .control-button img,
+body.theme-dark .social-link img,
+body.theme-dark .event-share-link img {
+  filter: brightness(0) invert(1);
+}
+
+.theme-toggle #theme-icon img {
+  width: 20px;
+  height: 20px;
 }
 
 .empty-state {
