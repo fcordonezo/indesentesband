@@ -129,8 +129,21 @@ function renderFooter() {
 }
 
 function getSectionFromHash() {
-  const section = window.location.hash.slice(1);
+  const section = window.location.hash.slice(1).split("/")[0];
   return ["home", "music", "events", "about", "contact"].includes(section) ? section : null;
+}
+
+function getEventSlugFromHash() {
+  const hashParts = window.location.hash.slice(1).split("/");
+  return hashParts[0] === "events" && hashParts[1] ? decodeURIComponent(hashParts[1]) : null;
+}
+
+function resolveEventFromHash(events) {
+  const hashSlug = getEventSlugFromHash();
+  if (!hashSlug) return null;
+  return events.find((event) => getEventSlug(event) === hashSlug)
+    || events.find((event) => getEventNameSlug(event) === hashSlug)
+    || null;
 }
 
 function renderSection(section, updateHash = true) {
@@ -926,9 +939,10 @@ function compareEventsByStatus(firstEvent, secondEvent, status) {
 function renderEventCard(event, now) {
   const status = getEventStatus(event, now);
   const eventIndex = state.data.events.events.indexOf(event);
+  const eventSlug = getEventSlug(event);
 
   return `
-    <article class="event-card event-card-lazy${status === "today" ? " is-today" : ""}" data-event-index="${eventIndex}">
+    <article class="event-card event-card-lazy event-card-clickable${status === "today" ? " is-today" : ""}" data-event-index="${eventIndex}" data-event-slug="${eventSlug}" role="link" tabindex="0" aria-label="Ver evento completo: ${event.name}">
       <div class="event-card-placeholder" aria-hidden="true">
         <span></span>
         <span></span>
@@ -942,6 +956,7 @@ function renderEventCardContent(event, now) {
   const status = getEventStatus(event, now);
   const statusLabel = status === "past" ? "Pasado" : status === "today" ? "Hoy" : "Próximo";
   const isLive = isEventLive(event, now);
+  const eventSlug = getEventSlug(event);
 
   return `
       <div>
@@ -954,10 +969,10 @@ function renderEventCardContent(event, now) {
         </div>
         <h3>${event.name}</h3>
         <div class="event-meta">
-          <span class="meta-pill">📍 ${event.venue}</span>
-          <span class="meta-pill">📅 ${event.date}</span>
-          <span class="meta-pill">🕒 ${event.time}</span>
-          <span class="meta-pill">🎟️ ${event.price}</span>
+          ${renderEventVenueMeta(event)}
+          ${renderEventDateMeta(event, status)}
+          <span class="meta-pill">${getEventMetaIcon("clock")}${event.time}</span>
+          ${renderEventPriceMeta(event, status)}
         </div>
       </div>
 
@@ -966,18 +981,16 @@ function renderEventCardContent(event, now) {
       <div class="event-flyers">
         ${event.flyers
       .map((flyer) => `
-            <button type="button" class="event-flyer-button" data-image-viewer="${flyer}" data-image-alt="Flyer del evento ${event.name}" aria-label="Ver flyer completo de ${event.name}">
+            <div class="event-flyer-preview">
               <img src="${flyer}" alt="Flyer del evento ${event.name}" loading="lazy" decoding="async" />
-            </button>
+            </div>
           `)
       .join("")}
       </div>
 
-      <div class="event-actions">
-        <a class="primary-button" href="${event.mapUrl}" target="_blank" rel="noreferrer">Ver ubicación</a>
-        ${status === "past"
-      ? '<button class="secondary-button calendar-disabled" type="button" disabled>Agregar al Calendario</button>'
-      : `<a class="secondary-button" href="${getGoogleCalendarUrl(event)}" target="_blank" rel="noreferrer">Agregar al Calendario</a>`}
+      <div class="event-share-bar">
+        <span>Compartir</span>
+        ${renderEventShareLinks(event)}
       </div>
   `;
 }
@@ -989,6 +1002,7 @@ function hydrateEventCard(card, now) {
 
   card.innerHTML = renderEventCardContent(event, now);
   card.dataset.hydrated = "true";
+  bindEventInteractions();
 }
 
 function bindLazyEventCards(now) {
@@ -1009,6 +1023,262 @@ function bindLazyEventCards(now) {
   }, { rootMargin: "300px 0px" });
 
   cards.forEach((card) => observer.observe(card));
+}
+
+function getAbsoluteEventUrl(event) {
+  const baseUrl = `${window.location.origin}${window.location.pathname}`;
+  return `${baseUrl}#events/${encodeURIComponent(getEventSlug(event))}`;
+}
+
+function getAbsoluteAssetUrl(assetPath) {
+  return new URL(assetPath, window.location.href.split("#")[0]).href;
+}
+
+function getEventMetaIcon(name) {
+  const icons = {
+    location: "📍",
+    calendar: "📅",
+    clock: "🕒",
+    ticket: "🎟️"
+  };
+  return `<span class="meta-pill-icon-emoji" aria-hidden="true">${icons[name] || ""}</span>`;
+}
+
+function renderEventVenueMeta(event) {
+  if (event.mapUrl) {
+    return `<a class="meta-pill meta-pill-link" href="${event.mapUrl}" target="_blank" rel="noreferrer" title="Abrir ubicación de ${event.name} en el mapa">${getEventMetaIcon("location")}${event.venue || "Ver ubicación"}</a>`;
+  }
+  return `<span class="meta-pill">${getEventMetaIcon("location")}${event.venue}</span>`;
+}
+
+function renderEventDateMeta(event, status) {
+  if (status === "past") {
+    return `<span class="meta-pill">${getEventMetaIcon("calendar")}${event.date}</span>`;
+  }
+  return `<a class="meta-pill meta-pill-link" href="${getGoogleCalendarUrl(event)}" target="_blank" rel="noreferrer" title="Agregar ${event.name} al calendario">${getEventMetaIcon("calendar")}${event.date}</a>`;
+}
+
+function renderEventPriceMeta(event, status) {
+  if (status !== "past" && event.ticketsUrl) {
+    return `<a class="meta-pill meta-pill-link" href="${event.ticketsUrl}" target="_blank" rel="noreferrer" title="Comprar boletas para ${event.name}">${getEventMetaIcon("ticket")}${event.price}</a>`;
+  }
+  return `<span class="meta-pill">${getEventMetaIcon("ticket")}${event.price}</span>`;
+}
+
+function getShareIcon(name) {
+  const icons = {
+    facebook: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 8h3V4h-3c-3.3 0-5 2-5 5v2H6v4h3v6h4v-6h3l1-4h-4V9c0-.8.4-1 1-1z"></path></svg>',
+    instagram: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4.2"></circle><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"></circle></svg>',
+    whatsapp: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 11.6a8.7 8.7 0 0 1-12.9 7.6L3.5 20.7l1.5-4a8.7 8.7 0 1 1 15.5-5.1z" fill="none" stroke="currentColor"></path><path d="M8.2 7.2c-.2-.5-.4-.5-.7-.5h-.6c-.2 0-.5.1-.7.3-.2.3-.9 1-1 2.3-.1 1.3 1.1 3.1 1.2 3.3.1.2 2.2 3.5 5.5 4.7 2.7 1 3.2.8 3.8.7.6-.1 2-.8 2.3-1.6.3-.8.3-1.5.2-1.6-.1-.2-.3-.3-.7-.5l-2-.9c-.3-.1-.5-.2-.7.2l-.8 1c-.2.2-.4.2-.7.1-1-.4-1.8-.8-2.6-1.4-.7-.5-1.1-1.1-1.2-1.4-.1-.3.2-.5.3-.7l.5-.6c.2-.2.2-.4.3-.6.1-.2 0-.4-.1-.6l-.9-2.2z"></path></svg>',
+    x: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.4 3H22l-7.8 8.9L23.2 21h-7l-5.5-6.8L4.3 21H.7l8.4-9.6L.4 3h7.1l5 6.2L18.4 3zm-1.3 16h2L6.4 4.8H4.2L17.1 19z"></path></svg>',
+    copy: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="11" height="11" rx="2"></rect><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"></path></svg>'
+  };
+  return icons[name] || icons.copy;
+}
+
+function renderEventShareLinks(event, compact = false) {
+  const url = encodeURIComponent(getAbsoluteEventUrl(event));
+  const text = encodeURIComponent(`${event.name} - INDESENTES`);
+  const links = [
+    `<a class="event-share-link" href="https://www.facebook.com/sharer/sharer.php?u=${url}" target="_blank" rel="noreferrer" aria-label="Compartir en Facebook" title="Facebook">${getShareIcon("facebook")}</a>`,
+    `<button class="event-share-link" type="button" data-event-share="instagram" aria-label="Compartir en Instagram" title="Instagram">${getShareIcon("instagram")}</button>`,
+    `<a class="event-share-link" href="https://wa.me/?text=${text}%20${url}" target="_blank" rel="noreferrer" aria-label="Compartir en WhatsApp" title="WhatsApp">${getShareIcon("whatsapp")}</a>`,
+    `<a class="event-share-link" href="https://twitter.com/intent/tweet?text=${text}&url=${url}" target="_blank" rel="noreferrer" aria-label="Compartir en X" title="X">${getShareIcon("x")}</a>`,
+    `<button class="event-share-link" type="button" data-event-share="copy" aria-label="Copiar enlace del evento" title="Copiar enlace">${getShareIcon("copy")}</button>`
+  ];
+
+  return `<div class="event-share-links${compact ? " compact" : ""}" data-event-share-links>${links.join("")}</div>`;
+}
+
+function renderEventDetail(event, now) {
+  const status = getEventStatus(event, now);
+  const statusLabel = status === "past" ? "Pasado" : status === "today" ? "Hoy" : "Próximo";
+  const isLive = isEventLive(event, now);
+  const flyer = event.flyers?.[0] || "";
+
+  setEventShareMetadata(event);
+  document.getElementById("page-content").innerHTML = `
+    <section class="page-section event-detail">
+      <div class="event-detail-toolbar">
+        <a class="event-detail-back" href="#events" data-back-events>← Volver a Eventos</a>
+      </div>
+
+      <div class="event-detail-layout">
+        <figure class="event-detail-flyer">
+          <button type="button" class="event-detail-flyer-button" data-image-viewer="${flyer}" data-image-alt="Flyer del evento ${event.name}" aria-label="Ver flyer completo de ${event.name}" title="Ver flyer en tamaño completo">
+            <img src="${flyer}" alt="Flyer del evento ${event.name}" />
+          </button>
+        </figure>
+
+        <article class="event-detail-content">
+          <div class="event-heading-row">
+            <p class="eyebrow">${event.type}</p>
+            <div class="event-status-tags">
+              <span class="event-status-tag ${status}">${statusLabel}</span>
+              ${isLive ? '<span class="event-status-tag live">En vivo</span>' : ""}
+            </div>
+          </div>
+          <h3>${event.name}</h3>
+          <div class="event-meta">
+            ${renderEventVenueMeta(event)}
+            ${renderEventDateMeta(event, status)}
+            <span class="meta-pill">${getEventMetaIcon("clock")}${event.time}</span>
+            ${renderEventPriceMeta(event, status)}
+          </div>
+          <p>${event.description}</p>
+          <div class="event-detail-share">
+            <span class="album-label">Compartir evento</span>
+            ${renderEventShareLinks(event)}
+          </div>
+        </article>
+      </div>
+    </section>
+  `;
+  bindEventInteractions();
+}
+
+function bindEventInteractions() {
+  document.querySelectorAll("[data-open-event]").forEach((link) => {
+    link.addEventListener("click", (event) => {
+      event.preventDefault();
+      window.location.hash = `events/${encodeURIComponent(link.dataset.openEvent)}`;
+    });
+  });
+
+  document.querySelectorAll("[data-event-slug]").forEach((card) => {
+    const openCard = () => {
+      window.location.hash = `events/${encodeURIComponent(card.dataset.eventSlug)}`;
+    };
+    card.addEventListener("click", (event) => {
+      if (event.target.closest("a, button, .event-share-bar")) return;
+      openCard();
+    });
+    card.addEventListener("keydown", (event) => {
+      if ((event.key === "Enter" || event.key === " ") && !event.target.closest("a, button")) {
+        event.preventDefault();
+        openCard();
+      }
+    });
+  });
+
+  document.querySelectorAll("[data-back-events]").forEach((link) => {
+    link.addEventListener("click", (event) => {
+      event.preventDefault();
+      window.location.hash = "events";
+    });
+  });
+
+  document.querySelectorAll("[data-event-share]").forEach((button) => {
+    button.addEventListener("click", async () => {
+      const card = button.closest("[data-event-index]");
+      const detailSlug = getEventSlugFromHash();
+      const event = card
+        ? state.data.events.events[Number(card.dataset.eventIndex)]
+        : state.data.events.events.find((item) => getEventSlug(item) === detailSlug);
+      if (!event) return;
+
+      const shareData = {
+        title: `${event.name} - INDESENTES`,
+        text: `${event.name} - INDESENTES`,
+        url: getAbsoluteEventUrl(event)
+      };
+
+      if (button.dataset.eventShare === "copy") {
+        const eventUrl = getAbsoluteEventUrl(event);
+        let copied = false;
+
+        try {
+          await navigator.clipboard.writeText(eventUrl);
+          copied = true;
+        } catch (error) {
+          const copyField = document.createElement("textarea");
+          copyField.value = eventUrl;
+          copyField.setAttribute("readonly", "");
+          copyField.style.position = "fixed";
+          copyField.style.opacity = "0";
+          document.body.appendChild(copyField);
+          copyField.select();
+          copied = document.execCommand("copy");
+          copyField.remove();
+        }
+
+        if (copied) {
+          button.classList.add("copied");
+          button.title = "Enlace copiado";
+          button.setAttribute("aria-label", "Enlace copiado");
+          window.setTimeout(() => {
+            button.classList.remove("copied");
+            button.title = "Copiar enlace";
+            button.setAttribute("aria-label", "Copiar enlace del evento");
+          }, 1800);
+        } else {
+          window.prompt("Copia el enlace del evento:", eventUrl);
+        }
+        return;
+      }
+
+      if (button.dataset.eventShare === "instagram" && navigator.share) {
+        try {
+          await navigator.share(shareData);
+          return;
+        } catch (error) {
+          if (error.name === "AbortError") return;
+        }
+      }
+
+      if (button.dataset.eventShare === "instagram") {
+        try {
+          await navigator.clipboard.writeText(getAbsoluteEventUrl(event));
+          button.classList.add("copied");
+          button.title = "Enlace copiado para Instagram";
+          window.setTimeout(() => {
+            button.classList.remove("copied");
+            button.title = "Instagram";
+          }, 1800);
+        } catch (error) {
+          window.prompt("Copia el enlace del evento:", getAbsoluteEventUrl(event));
+        }
+      }
+    });
+  });
+}
+
+function setEventShareMetadata(event) {
+  const url = getAbsoluteEventUrl(event);
+  const flyer = event.flyers?.[0] ? getAbsoluteAssetUrl(event.flyers[0]) : getAbsoluteAssetUrl("assets/logo-dark.webp");
+  const description = `${event.name}. ${event.date} - ${event.time}. ${event.venue}.`;
+  setMetaTag("meta[property='og:url']", "content", url);
+  setMetaTag("meta[property='og:title']", "content", `${event.name} | INDESENTES`);
+  setMetaTag("meta[property='og:description']", "content", description);
+  setMetaTag("meta[property='og:image']", "content", flyer);
+  setMetaTag("meta[property='og:image:secure_url']", "content", flyer);
+  setMetaTag("meta[property='og:image:type']", "content", flyer.toLowerCase().endsWith(".webp") ? "image/webp" : "image/jpeg");
+  setMetaTag("meta[property='og:image:alt']", "content", `Flyer del evento ${event.name} - INDESENTES`);
+  setMetaTag("meta[name='twitter:title']", "content", `${event.name} | INDESENTES`);
+  setMetaTag("meta[name='twitter:description']", "content", description);
+  setMetaTag("meta[name='twitter:image']", "content", flyer);
+  setMetaTag("link[rel='canonical']", "href", url);
+  document.title = `${event.name} | INDESENTES`;
+}
+
+function resetEventShareMetadata() {
+  setMetaTag("meta[property='og:url']", "content", "https://indesentesband.com/");
+  setMetaTag("meta[property='og:title']", "content", "INDESENTES | Punk rock desde Bogotá");
+  setMetaTag("meta[property='og:description']", "content", "Escucha la música de INDESENTES, descubre nuestros eventos y conecta con la banda de punk rock y rock alternativo de Bogotá.");
+  setMetaTag("meta[property='og:image']", "content", "https://indesentesband.com/assets/logo-dark.webp");
+  setMetaTag("meta[property='og:image:secure_url']", "content", "https://indesentesband.com/assets/logo-dark.webp");
+  setMetaTag("meta[property='og:image:type']", "content", "image/webp");
+  setMetaTag("meta[property='og:image:alt']", "content", "Logo de INDESENTES");
+  setMetaTag("meta[name='twitter:title']", "content", "INDESENTES | Punk rock desde Bogotá");
+  setMetaTag("meta[name='twitter:description']", "content", "Música, eventos y contacto de INDESENTES, banda de punk rock y rock alternativo de Bogotá.");
+  setMetaTag("meta[name='twitter:image']", "content", "https://indesentesband.com/assets/logo-dark.webp");
+  setMetaTag("link[rel='canonical']", "href", "https://indesentesband.com/");
+  document.title = "INDESENTES | Punk rock desde Bogotá";
+}
+
+function setMetaTag(selector, attribute, value) {
+  const tag = document.querySelector(selector);
+  if (tag) tag.setAttribute(attribute, value);
 }
 
 function bindImageModal() {
@@ -1059,6 +1329,31 @@ function getGoogleCalendarUrl(event) {
   return `https://calendar.google.com/calendar/render?${params.toString()}`;
 }
 
+function getEventDateSlug(event) {
+  if (event.start) {
+    const dateFromStart = String(event.start).match(/^\d{4}-\d{2}-\d{2}/);
+    if (dateFromStart) return dateFromStart[0];
+  }
+  return "fecha";
+}
+
+function getEventNameSlug(event) {
+  const customName = event.slug
+    ? String(event.slug)
+    : (event.name || "evento")
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "");
+
+  return customName
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "") || "evento";
+}
+
+function getEventSlug(event) {
+  return `${getEventNameSlug(event)}-${getEventDateSlug(event)}`;
+}
+
 function formatCalendarDateTime(value) {
   return new Date(value).toISOString().replace(/[-:]/g, "").replace(/\.\d{3}Z$/, "Z");
 }
@@ -1072,6 +1367,21 @@ function isEventLive(event, now = new Date()) {
 function renderEvents() {
   const events = state.data.events.events;
   const now = new Date();
+  const eventSlug = getEventSlugFromHash();
+
+  if (eventSlug) {
+    const selectedEvent = resolveEventFromHash(events);
+    if (selectedEvent) {
+      const datedSlug = getEventSlug(selectedEvent);
+      if (eventSlug !== datedSlug) {
+        window.history.replaceState({}, "", `#events/${encodeURIComponent(datedSlug)}`);
+      }
+      renderEventDetail(selectedEvent, now);
+      return;
+    }
+  }
+
+  resetEventShareMetadata();
   const filteredEvents = events.filter((event) => {
     const statusMatches = state.events.status === "all" || getEventStatus(event, now) === state.events.status;
     const dateMatches = !state.events.selectedDates.length || state.events.selectedDates.includes(getEventDateKey(new Date(event.start)));
@@ -1134,6 +1444,7 @@ function renderEvents() {
 
   bindLazyEventCards(now);
   bindEventFilters(now);
+  bindEventInteractions();
 }
 
 function bindEventFilters(now) {
