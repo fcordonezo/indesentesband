@@ -11,7 +11,8 @@
     { "id": "music", "label": "Nuestra Música" },
     { "id": "events", "label": "Eventos" },
     { "id": "about", "label": "Nosotros" },
-    { "id": "contact", "label": "Contacto" }
+    { "id": "contact", "label": "Contacto" },
+    { "id": "epk", "label": "EPK" }
   ],
   "theme": {
     "darkLogo": "assets/logo-dark.webp",

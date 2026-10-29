@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <base href="/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="author" content="INDESENTES" />
+    <meta name="theme-color" content="#090909" />
+    <meta name="description" content="EPK de INDESENTES: banda de punk rock y rock alternativo de Bogotá. Biografía, música, formación y contacto para booking y prensa." />
+    <link rel="canonical" href="https://indesentesband.com/epk/" />
+    <link rel="alternate" hreflang="es-CO" href="https://indesentesband.com/epk/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="INDESENTES" />
+    <meta property="og:locale" content="es_CO" />
+    <meta property="og:url" content="https://indesentesband.com/epk/" />
+    <meta property="og:title" content="EPK | INDESENTES" />
+    <meta property="og:description" content="Conoce a INDESENTES: punk rock y rock alternativo desde Bogotá. Escucha su música y contacta a la banda para booking y prensa." />
+    <meta property="og:image" content="https://indesentesband.com/assets/Indesentes.jpg" />
+    <meta property="og:image:alt" content="INDESENTES, banda de punk rock y rock alternativo de Bogotá" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="EPK | INDESENTES" />
+    <meta name="twitter:description" content="Biografía, música y contacto de INDESENTES para booking y prensa." />
+    <meta name="twitter:image" content="https://indesentesband.com/assets/Indesentes.jpg" />
+    <title>EPK | INDESENTES</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" type="image/webp" href="assets/ico.webp" />
+    <script defer src="app.js"></script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "MusicGroup",
+        "@id": "https://indesentesband.com/#organization",
+        "name": "INDESENTES",
+        "url": "https://indesentesband.com/",
+        "mainEntityOfPage": "https://indesentesband.com/epk/",
+        "description": "Banda de punk rock y rock alternativo de Bogotá, Colombia.",
+        "genre": ["Punk rock", "Rock alternativo", "Rock en español"],
+        "foundingLocation": {
+          "@type": "Place",
+          "name": "Bogotá, Colombia"
+        },
+        "image": "https://indesentesband.com/assets/Indesentes.jpg",
+        "sameAs": [
+          "https://www.instagram.com/indesentesband/",
+          "https://www.facebook.com/indesentespr/"
+        ]
+      }
+    </script>
+  </head>
+  <body>
+    <div class="page-shell">
+      <button
+        id="theme-toggle"
+        class="theme-toggle"
+        type="button"
+        aria-label="Cambiar tema"
+        title="Cambiar tema"
+      >
+        <span id="theme-icon" aria-hidden="true">
+          <img src="assets/ico/sun.svg" alt="" />
+        </span>
+      </button>
+
+      <header class="site-header" id="site-header">
+        <div class="brand-mark">
+          <img id="brand-logo" src="assets/logo-dark.webp" alt="Logo INDESENTES" width="180" height="180" fetchpriority="high" decoding="async" />
+        </div>
+        <div class="brand-copy">
+          <p class="eyebrow">PUNK ROCK</p>
+          <h1 id="site-title">INDESENTES</h1>
+          <p id="site-tagline" class="tagline"></p>
+          <div id="social-links" class="social-links" aria-label="Redes sociales"></div>
+        </div>
+      </header>
+
+      <nav class="main-nav" aria-label="Navegación principal">
+        <div class="nav-shell">
+          <ul id="nav-menu" class="nav-menu"></ul>
+        </div>
+      </nav>
+
+      <main id="page-content" class="page-content" aria-live="polite"></main>
+
+      <footer class="site-footer" id="site-footer"></footer>
+    </div>
+
+    <div id="image-modal" class="image-modal" role="dialog" aria-modal="true" aria-labelledby="image-modal-title" hidden>
+      <div class="image-modal-backdrop" data-image-modal-close></div>
+      <div class="image-modal-content">
+        <div class="image-modal-toolbar">
+          <h2 id="image-modal-title">Vista previa del flyer</h2>
+          <button type="button" class="image-modal-close" data-image-modal-close aria-label="Cerrar imagen" title="Cerrar imagen">×</button>
+        </div>
+        <img id="image-modal-preview" src="" alt="" />
+      </div>
+    </div>
+  </body>
+</html>

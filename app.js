@@ -44,10 +44,10 @@ async function initApp() {
     renderHeader();
     renderNav();
     renderFooter();
-    renderSection(getSectionFromHash() || "home", false);
+    renderSection(getSectionFromHash() || (isEPKPath() ? "epk" : "home"), false);
     window.addEventListener("hashchange", () => {
       const section = getSectionFromHash() || "home";
-      if (section === "home" || state.data[section]) renderSection(section, false);
+      if (section === "home" || section === "epk" || state.data[section]) renderSection(section, false);
     });
 
     const [music, events, about, contact] = await Promise.all([
@@ -60,7 +60,7 @@ async function initApp() {
     bindAudioEvents();
     startEventClock();
 
-    const requestedSection = getSectionFromHash();
+    const requestedSection = getSectionFromHash() || (isEPKPath() ? "epk" : null);
     if (requestedSection && requestedSection !== "home") renderSection(requestedSection, false);
   } catch (error) {
     console.error("No se pudo cargar el contenido JSON:", error);
@@ -105,7 +105,7 @@ function renderNav() {
       (item) => `
         <li class="nav-item">
           <a
-            href="#${item.id}"
+              href="${item.id === "epk" ? "/epk/" : `${isEPKPath() ? "/" : ""}#${item.id}`}"
             data-section="${item.id}"
             class="${state.currentSection === item.id ? "active" : ""}"
           >
@@ -118,6 +118,7 @@ function renderNav() {
 
   navMenu.querySelectorAll("a[data-section]").forEach((button) => {
     button.addEventListener("click", (event) => {
+      if (button.dataset.section === "epk" || isEPKPath()) return;
       event.preventDefault();
       const section = button.dataset.section;
       renderSection(section);
@@ -132,7 +133,11 @@ function renderFooter() {
 
 function getSectionFromHash() {
   const section = window.location.hash.slice(1).split("/")[0];
-  return ["home", "music", "events", "about", "contact"].includes(section) ? section : null;
+  return ["home", "music", "events", "about", "contact", "epk"].includes(section) ? section : null;
+}
+
+function isEPKPath() {
+  return window.location.pathname.replace(/\/+$/, "") === "/epk";
 }
 
 function getEventSlugFromHash() {
@@ -149,11 +154,13 @@ function resolveEventFromHash(events) {
 }
 
 function renderSection(section, updateHash = true) {
-  if (section !== "home" && (!state.data || !state.data[section])) return;
+  if (section !== "home" && section !== "epk" && (!state.data || !state.data[section])) return;
+  if (section === "epk" && !state.data?.about) return;
 
   state.currentSection = section;
   if (updateHash && window.location.hash !== `#${section}`) {
-    window.history.pushState({}, "", `#${section}`);
+    const sectionUrl = isEPKPath() ? `/#${section}` : `#${section}`;
+    window.history.pushState({}, "", sectionUrl);
   }
 
   const buttons = document.querySelectorAll("[data-section]");
@@ -166,6 +173,7 @@ function renderSection(section, updateHash = true) {
   if (section === "events") renderEvents();
   if (section === "about") renderAbout();
   if (section === "contact") renderContact();
+  if (section === "epk") renderEPK();
 }
 
 function renderHome() {
@@ -1592,6 +1600,123 @@ function renderAbout() {
       .join("")}
       </div>
     </section>
+  `;
+}
+
+function renderEPK() {
+  const { about, contact, home, site } = state.data;
+  const youtubeEmbed = home.media.embeds.find((embed) => embed.title === "YouTube");
+  const showCount = home.metrics.items.find((item) => item.label === "Shows");
+
+  document.getElementById("page-content").innerHTML = `
+    <div class="epk">
+      <section class="epk-hero" aria-labelledby="epk-title">
+        <div class="epk-hero-copy">
+          <p class="eyebrow">Electronic press kit · Bogotá, Colombia</p>
+          <h2 id="epk-title">INDESENTES</h2>
+          <p class="epk-lead">Punk rock y rock alternativo</p>
+          <p class="epk-intro">${home.hero.description}</p>
+          <div class="epk-actions">
+            <a class="primary-button epk-button" href="/#contact">Contacto para booking</a>
+            <a class="secondary-button epk-button" href="/#music">Escuchar música</a>
+          </div>
+        </div>
+        <figure class="epk-hero-image">
+          <img src="assets/members/banda.webp" alt="INDESENTES, banda de punk rock y rock alternativo de Bogotá" fetchpriority="high" />
+          <figcaption>Rock de Bogotá para el escenario.</figcaption>
+        </figure>
+      </section>
+
+      <section class="epk-facts" aria-label="Datos de la banda">
+        <div><span>Base</span><strong>${about.story.details.find((item) => item.label === "Origen")?.value || "Bogotá, Colombia"}</strong></div>
+        <div><span>Sonido</span><strong>${about.story.details.find((item) => item.label === "Estilo")?.value || "Punk rock · Rock alternativo"}</strong></div>
+        <div><span>Formación</span><strong>${about.members.items.length} integrantes</strong></div>
+        <div><span>Trayectoria</span><strong>${showCount?.value + " shows en vivo"}</strong></div>
+      </section>
+
+      <section class="page-section epk-section">
+        <div class="section-header">
+          <div><p class="eyebrow">La propuesta</p><h2>Una banda con memoria y presente</h2></div>
+          <p>Rock directo, melodías memorables y una puesta en escena intensa.</p>
+        </div>
+        <div class="epk-story-grid">
+          <article class="epk-story-card">
+            <h3>${about.story.title}</h3>
+            <p>${about.story.text}</p>
+          </article>
+          <article class="epk-story-card epk-story-highlight">
+            <span class="epk-quote-mark" aria-hidden="true">“</span>
+            <h3>${about.mission.title}</h3>
+            <p>${about.mission.text}</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="page-section epk-section" aria-labelledby="epk-music-title">
+        <div class="section-header">
+          <div><p class="eyebrow">Escucha</p><h2 id="epk-music-title">Escucha nuestra música</h2></div>
+          <a class="epk-text-link" href="/#music">Ver discografía <span aria-hidden="true">↗</span></a>
+        </div>
+        <div class="epk-music-grid">
+          <div class="epk-spotify">
+            <iframe
+              src="https://open.spotify.com/embed/artist/0bU6fDJL5NjYqPWOXTf9Md?utm_source=generator&amp;theme=0"
+              title="Música de INDESENTES en Spotify"
+              loading="lazy"
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            ></iframe>
+          </div>
+          ${youtubeEmbed ? `
+            <div class="epk-video">
+              <iframe
+                src="${youtubeEmbed.src}"
+                title="Video de INDESENTES en YouTube"
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+              ></iframe>
+              <p>Una muestra de INDESENTES en imagen y sonido.</p>
+            </div>
+          ` : ""}
+        </div>
+      </section>
+
+      <section class="page-section epk-section" aria-labelledby="epk-lineup-title">
+        <div class="section-header">
+          <div><p class="eyebrow">En el escenario</p><h2 id="epk-lineup-title">La formación</h2></div>
+          <p>Cuatro integrantes, una identidad compartida.</p>
+        </div>
+        <div class="epk-lineup">
+          ${about.members.items.map((member) => `
+            <article class="epk-member">
+              <img src="${member.image}" alt="${member.name}, ${member.role} en INDESENTES" loading="lazy" />
+              <div><h3>${member.name}</h3><p>${member.role}</p></div>
+            </article>
+          `).join("")}
+        </div>
+      </section>
+
+      <section class="epk-contact" aria-labelledby="epk-contact-title">
+        <div class="epk-contact-copy">
+          <p class="eyebrow">Booking</p>
+          <h2 id="epk-contact-title">Llevemos el rock a tu escenario.</h2>
+          <p>${contact.info.description}</p>
+        </div>
+        <aside class="epk-contact-card" aria-label="Contacto para booking">
+          <p class="eyebrow">Contacto directo</p>
+          <a class="epk-contact-email" href="mailto:${contact.info.email}?subject=Booking%20INDESENTES">${contact.info.email}</a>
+          <p class="epk-contact-location">${contact.info.city}</p>
+          <div class="epk-contact-actions">
+            <a class="primary-button epk-button" href="/#contact">Escribir a la banda <span aria-hidden="true">↗</span></a>
+          </div>
+          <div class="epk-socials" aria-label="Redes sociales">
+            ${site.socials.filter((social) => social.label !== "Correo").map((social) => `
+              <a class="social-link" href="${social.url}" target="_blank" rel="noreferrer" aria-label="${social.label}" title="${social.label}">${getSocialIcon(social.icon)}</a>
+            `).join("")}
+          </div>
+        </aside>
+      </section>
+    </div>
   `;
 }
 
