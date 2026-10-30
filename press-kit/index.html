@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="INDESENTES">
+  <meta name="description" content="Press kit 2026 de INDESENTES, banda de punk rock y rock alternativo de Bogotá, Colombia.">
+  <title>INDESENTES — Press Kit 2026</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --paper: #111011;
+      --paper-light: #191617;
+      --ink: #f5f0ec;
+      --muted: #b7aaa4;
+      --red: #ff5145;
+      --gold: #f4b65f;
+      --line: rgba(255, 255, 255, 0.14);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      background: #292426;
+      color: var(--ink);
+      font-family: "Segoe UI", Arial, sans-serif;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      position: relative;
+      width: 210mm;
+      height: 297mm;
+      margin: 12mm auto;
+      overflow: hidden;
+      background:
+        radial-gradient(ellipse at 0 100%, rgba(255, 81, 69, 0.1), transparent 42%),
+        var(--paper);
+      page-break-after: always;
+      break-after: page;
+    }
+
+    .page:last-child {
+      page-break-after: auto;
+      break-after: auto;
+    }
+
+    .page-inner {
+      height: 100%;
+      padding: 18mm 17mm 15mm;
+    }
+
+    .eyebrow {
+      margin: 0;
+      color: var(--gold);
+      font-size: 8pt;
+      font-weight: 800;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+
+    .display {
+      font-family: "Segoe UI", Arial, sans-serif;
+      font-weight: 800;
+      letter-spacing: 0.035em;
+      text-transform: uppercase;
+    }
+
+    .page-footer {
+      position: absolute;
+      right: 17mm;
+      bottom: 8mm;
+      left: 17mm;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 3mm;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 7pt;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .page-footer strong {
+      color: var(--ink);
+      font-weight: 700;
+    }
+
+    .cover {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 17mm;
+      isolation: isolate;
+      background: #121011;
+    }
+
+    .cover::before,
+    .cover::after {
+      position: absolute;
+      z-index: -1;
+      inset: 0;
+      content: "";
+    }
+
+    .cover::before {
+      background-image: url("../assets/members/banda.webp");
+      background-position: center;
+      background-size: cover;
+      filter: saturate(0.82);
+    }
+
+    .cover::after {
+      background:
+        linear-gradient(180deg, rgba(10, 8, 9, 0.25) 0%, rgba(10, 8, 9, 0.22) 30%, rgba(10, 8, 9, 0.91) 83%),
+        linear-gradient(90deg, rgba(10, 8, 9, 0.58), transparent 85%);
+    }
+
+    .cover-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .cover-mark {
+      width: 42mm;
+      height: 15mm;
+      object-fit: contain;
+      object-position: left center;
+    }
+
+    .cover-edition {
+      padding: 2.5mm 3.5mm;
+      border: 1px solid rgba(255, 255, 255, 0.55);
+      color: #fff;
+      font-size: 8pt;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+    }
+
+    .cover-title {
+      margin: 0 0 4mm;
+      font-size: 46pt;
+      line-height: 1;
+      text-shadow: 0 3px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .cover-subtitle {
+      margin: 0;
+      color: #fff;
+      font-size: 14pt;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .cover-rule {
+      width: 18mm;
+      height: 1.5mm;
+      margin: 7mm 0;
+      background: var(--red);
+    }
+
+    .cover-tagline {
+      max-width: 130mm;
+      margin: 0;
+      color: #f3e7df;
+      font-size: 13pt;
+      line-height: 1.55;
+    }
+
+    .cover-bottom {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 12mm;
+      padding-top: 6mm;
+      border-top: 1px solid rgba(255, 255, 255, 0.45);
+    }
+
+    .cover-location {
+      margin: 0;
+      color: #fff;
+      font-size: 9pt;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .cover-genres {
+      margin: 2mm 0 0;
+      color: #e4d8d1;
+      font-size: 8pt;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .cover-qr-link {
+      display: grid;
+      justify-items: center;
+      gap: 1.5mm;
+      color: #fff;
+      font-size: 7pt;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    .cover-qr-link img {
+      display: block;
+      width: 27mm;
+      height: 27mm;
+      padding: 1.5mm;
+      border-radius: 1mm;
+      background: #fff;
+    }
+
+    .cover-qr-link span {
+      color: #fff;
+    }
+
+    .cover-qr-link strong {
+      color: var(--gold);
+      font-size: 6.5pt;
+      letter-spacing: 0.05em;
+    }
+
+    .section-heading {
+      margin: 2mm 0 4mm;
+      font-size: 25pt;
+      line-height: 1.1;
+    }
+
+    .intro {
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(55mm, 0.75fr);
+      gap: 12mm;
+      align-items: start;
+    }
+
+    .bio {
+      margin: 0;
+      color: #e2d9d4;
+      font-size: 10.5pt;
+      line-height: 1.75;
+    }
+
+    .bio strong {
+      color: var(--ink);
+    }
+
+    .identity-card {
+      padding: 6mm;
+      border: 1px solid var(--line);
+      border-radius: 4mm;
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.015));
+    }
+
+    .identity-card h3,
+    .members-title,
+    .release-copy h3,
+    .history h3,
+    .connect h3 {
+      margin: 0;
+      color: var(--ink);
+      font-size: 13pt;
+    }
+
+    .identity-card dl {
+      display: grid;
+      gap: 4mm;
+      margin: 5mm 0 0;
+    }
+
+    .identity-card dl div {
+      display: grid;
+      gap: 1mm;
+    }
+
+    .identity-card dt {
+      color: var(--gold);
+      font-size: 7pt;
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .identity-card dd {
+      margin: 0;
+      color: #eee7e2;
+      font-size: 9pt;
+      line-height: 1.4;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3mm;
+      margin: 8mm 0;
+    }
+
+    .stat {
+      padding: 4mm;
+      border-top: 1px solid var(--red);
+      background: var(--paper-light);
+    }
+
+    .stat strong {
+      display: block;
+      color: var(--ink);
+      font-size: 20pt;
+      line-height: 1;
+    }
+
+    .stat span {
+      display: block;
+      margin-top: 2mm;
+      color: var(--muted);
+      font-size: 7pt;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 3mm;
+      margin-bottom: 4mm;
+    }
+
+    .section-label::after {
+      height: 1px;
+      flex: 1;
+      content: "";
+      background: var(--line);
+    }
+
+    .members-title {
+      font-size: 17pt;
+    }
+
+    .members-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 4mm;
+    }
+
+    .member {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 3mm;
+      background: var(--paper-light);
+    }
+
+    .member img {
+      display: block;
+      width: 100%;
+      height: 37mm;
+      object-fit: cover;
+      object-position: center 35%;
+    }
+
+    .member-copy {
+      min-height: 17mm;
+      padding: 3mm;
+    }
+
+    .member h4 {
+      margin: 0;
+      color: var(--ink);
+      font-size: 9pt;
+    }
+
+    .member p {
+      margin: 1mm 0 0;
+      color: var(--muted);
+      font-size: 7pt;
+      line-height: 1.35;
+    }
+
+    .release-strip {
+      display: grid;
+      grid-template-columns: 39mm 1fr;
+      align-items: center;
+      gap: 6mm;
+      margin-top: 7mm;
+      padding: 4mm;
+      border: 1px solid var(--line);
+      border-radius: 3mm;
+      background: var(--paper-light);
+    }
+
+    .release-strip img {
+      width: 39mm;
+      height: 39mm;
+      border-radius: 2mm;
+    }
+
+    .release-copy .eyebrow {
+      margin-bottom: 2mm;
+    }
+
+    .release-copy h3 {
+      font-size: 15pt;
+    }
+
+    .release-copy p:last-child {
+      margin: 2mm 0 0;
+      color: var(--muted);
+      font-size: 8pt;
+    }
+
+    .page-three .page-inner {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .page-three-main {
+      display: grid;
+      flex: 1;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto auto 1fr;
+      gap: 7mm 8mm;
+      padding-top: 8mm;
+    }
+
+    .history,
+    .connect {
+      padding: 6mm;
+      border: 1px solid var(--line);
+      border-radius: 4mm;
+      background: var(--paper-light);
+    }
+
+    .history {
+      grid-column: 1 / -1;
+    }
+
+    .history h3,
+    .connect h3 {
+      margin-bottom: 4mm;
+    }
+
+    .history-list {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 4mm;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .history-list li {
+      min-height: 22mm;
+      padding-left: 3mm;
+      border-left: 2px solid var(--red);
+      color: #e9e1dc;
+      font-size: 8.5pt;
+      line-height: 1.45;
+    }
+
+    .history-list strong {
+      display: block;
+      margin-bottom: 1mm;
+      color: var(--gold);
+      font-size: 9pt;
+    }
+
+    .music-links {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5mm;
+      grid-column: 1 / -1;
+      padding: 6mm;
+      border: 1px solid var(--line);
+      border-radius: 4mm;
+      background: linear-gradient(130deg, rgba(255, 81, 69, 0.08), var(--paper-light));
+    }
+
+    .music-link {
+      display: grid;
+      grid-template-columns: 32mm 1fr;
+      align-items: center;
+      gap: 5mm;
+      min-width: 0;
+    }
+
+    .music-link img {
+      display: block;
+      width: 32mm;
+      height: 32mm;
+      padding: 1.5mm;
+      border-radius: 2mm;
+      background: white;
+    }
+
+    .music-link .eyebrow {
+      margin-bottom: 2mm;
+    }
+
+    .music-link strong {
+      display: block;
+      color: var(--ink);
+      font-size: 11pt;
+    }
+
+    .music-link span {
+      display: block;
+      margin-top: 1.5mm;
+      color: var(--muted);
+      font-size: 8pt;
+      line-height: 1.4;
+    }
+
+    .connect {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .connect > p {
+      margin: 0 0 3mm;
+      color: var(--muted);
+      font-size: 8pt;
+      line-height: 1.5;
+    }
+
+    .contact-email {
+      margin-bottom: 4mm;
+      color: var(--gold);
+      font-size: 10pt;
+      font-weight: 700;
+      overflow-wrap: anywhere;
+    }
+
+    .social-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 3mm 5mm;
+      margin-top: auto;
+      padding-top: 4mm;
+      border-top: 1px solid var(--line);
+      font-size: 8pt;
+      font-weight: 700;
+    }
+
+    .social-links a {
+      color: var(--ink);
+    }
+
+    .qr-caption {
+      display: block;
+      margin-top: 2mm;
+      color: var(--muted);
+      font-size: 6.5pt;
+      text-align: center;
+    }
+
+    .wrap {
+      display: inline-block;
+    }
+
+    @page {
+      size: A4;
+      margin: 0;
+    }
+
+    @media screen {
+      .page {
+        box-shadow: 0 12px 50px rgba(0, 0, 0, 0.45);
+      }
+    }
+
+    @media print {
+      html,
+      body {
+        width: 210mm;
+        background: var(--paper);
+      }
+
+      .page {
+        margin: 0;
+        box-shadow: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="page cover" aria-label="Portada del press kit">
+      <div class="cover-top">
+        <img class="cover-mark" src="../assets/Indesentes.jpg" alt="INDESENTES">
+        <span class="cover-edition">PRESS KIT · 2026</span>
+      </div>
+
+      <div class="cover-copy">
+        <p class="eyebrow">Bogotá · Colombia</p>
+        <h1 class="display cover-title">INDESENTES</h1>
+        <p class="cover-subtitle">Punk rock · Rock alternativo</p>
+        <div class="cover-rule"></div>
+        <p class="cover-tagline">Rock con memoria, fuerza y personalidad. Una propuesta auténtica, directa y hecha para el escenario.</p>
+      </div>
+
+      <div class="cover-bottom">
+        <div>
+          <p class="cover-location">Bogotá, Colombia</p>
+          <p class="cover-genres">Música que se siente en el cuerpo y se queda en la memoria.</p>
+        </div>
+        <a class="cover-qr-link" href="https://indesentesband.com/" aria-label="Escanea el código QR para visitar indesentesband.com">
+          <img src="assets/website-qr.svg" alt="Código QR para visitar indesentesband.com">
+          <span>Visita nuestro sitio</span>
+          <strong>indesentesband.com ↗</strong>
+        </a>
+      </div>
+    </section>
+
+    <section class="page">
+      <div class="page-inner">
+        <p class="eyebrow">La banda</p>
+        <h2 class="display section-heading">Identidad y formación</h2>
+
+        <div class="intro">
+          <p class="bio">
+            INDESENTES nació en Bogotá como una idea de amigos unidos por una misma obsesión: hacer rock con memoria, fuerza y personalidad. Su sonido cruza <strong>punk rock y rock alternativo</strong>, con arreglos contundentes, letras profundas y melodías memorables. En vivo, la banda apuesta por una presencia escénica auténtica y directa, y por una conexión cercana con el público. Su catálogo reúne el álbum <strong>Muerto En Vida</strong> y los sencillos “Donde nunca” y “Entre vacíos”.
+          </p>
+
+          <aside class="identity-card">
+            <h3>La propuesta</h3>
+            <dl>
+              <div><dt>Origen</dt><dd>Bogotá, Colombia</dd></div>
+              <div><dt>Sonido</dt><dd>Punk rock · Rock alternativo</dd></div>
+              <div><dt>En escena</dt><dd>Auténtica y directa en cada show</dd></div>
+            </dl>
+          </aside>
+        </div>
+
+        <div class="stats" aria-label="Datos de la banda">
+          <div class="stat"><strong>12</strong><span>Canciones publicadas</span></div>
+          <div class="stat"><strong>25+</strong><span>Shows registrados</span></div>
+          <div class="stat"><strong>4</strong><span>Integrantes</span></div>
+        </div>
+
+        <div class="section-label">
+          <h3 class="display members-title">En el escenario</h3>
+        </div>
+
+        <div class="members-grid">
+          <article class="member">
+            <img src="../assets/members/curtis.webp" alt="Curtis, voz y guitarra">
+            <div class="member-copy"><h4>Curtis</h4><p>Voz y guitarra</p></div>
+          </article>
+          <article class="member">
+            <img src="../assets/members/jair.webp" alt="Jair, guitarra">
+            <div class="member-copy"><h4>Jair</h4><p>Guitarra</p></div>
+          </article>
+          <article class="member">
+            <img src="../assets/members/camilo.webp" alt="Camilo, bajo y coros">
+            <div class="member-copy"><h4>Camilo</h4><p>Bajo y coros</p></div>
+          </article>
+          <article class="member">
+            <img src="../assets/members/cris.webp" alt="Cris, batería">
+            <div class="member-copy"><h4>Cris</h4><p>Batería</p></div>
+          </article>
+        </div>
+
+        <div class="release-strip">
+          <img src="../assets/muerto en vida.webp" alt="Portada del álbum Muerto En Vida">
+          <div class="release-copy">
+            <p class="eyebrow">Álbum · 10 canciones</p>
+            <h3>Muerto En Vida</h3>
+            <p>Un álbum que recoge la energía y las historias de INDESENTES.</p>
+          </div>
+        </div>
+      </div>
+      <footer class="page-footer"><strong>INDESENTES</strong><span>PRESS KIT · 2026</span><span>02 / 03</span></footer>
+    </section>
+
+    <section class="page page-three">
+      <div class="page-inner">
+        <p class="eyebrow">En vivo · música · contacto</p>
+        <h2 class="display section-heading">Conoce más de la banda</h2>
+
+        <div class="page-three-main">
+          <section class="history" aria-labelledby="history-title">
+            <h3 id="history-title">Escenarios que hacen parte del camino</h3>
+            <ul class="history-list">
+              <li><strong>Bogotá Ciudad Rock</strong></li>
+              <li><strong>Universidad Nacional de Colombia</strong></li>
+              <li><strong>Unión Rock Festival</strong></li>
+              <li><strong>Weird Fest</strong></li>
+            </ul>
+          </section>
+
+          <section class="music-links" aria-label="Escucha y mira a INDESENTES">
+            <a class="music-link" href="https://open.spotify.com/intl-es/artist/0bU6fDJL5NjYqPWOXTf9Md">
+              <img src="assets/spotify-qr.svg" alt="Código QR para escuchar a INDESENTES en Spotify">
+              <span>
+                <span class="eyebrow">Escucha</span>
+                <strong>INDESENTES en Spotify</strong>
+                <span>Escanea el código o abre el enlace.</span>
+              </span>
+            </a>
+            <a class="music-link" href="https://www.youtube.com/watch?v=eFvaKwHb8lo">
+              <img src="assets/youtube-qr.svg" alt="Código QR para ver el video Entre vacíos en YouTube">
+              <span>
+                <span class="eyebrow">Video oficial</span>
+                <strong>“Entre vacíos”</strong>
+                <span>Escanea el código o abre el video.</span>
+              </span>
+            </a>
+          </section>
+
+          <section class="connect" aria-labelledby="connect-title">
+            <h3 id="connect-title">Booking & prensa</h3>
+            <p>Conciertos, festivales, bares, salas y presentaciones especiales.</p>
+            <a class="contact-email" href="mailto:contacto@indesentesband.com">contacto@indesentesband.com</a>
+            <p>Bogotá, Colombia · <a href="https://indesentesband.com/">indesentesband.com</a></p>
+            <nav class="social-links" aria-label="Redes sociales">
+              <a href="https://www.instagram.com/indesentesband/">Instagram ↗</a>
+              <a href="https://www.facebook.com/indesentespr">Facebook ↗</a>
+            </nav>
+          </section>
+
+          <section class="connect" aria-labelledby="catalog-title">
+            <h3 id="catalog-title">Catálogo</h3>
+            <p><strong>Muerto En Vida</strong> — álbum de 10 canciones.</p>
+            <p><strong>Singles</strong> — “Donde nunca” · “Entre vacíos”.</p>
+            <p>12 canciones disponibles para escuchar en plataformas.</p>
+            <a class="contact-email" href="https://open.spotify.com/intl-es/artist/0bU6fDJL5NjYqPWOXTf9Md">Abrir perfil de Spotify ↗</a>
+          </section>
+        </div>
+      </div>
+      <footer class="page-footer"><strong>INDESENTES</strong><span>BOGOTÁ · COLOMBIA</span><span>03 / 03</span></footer>
+    </section>
+  </main>
+</body>
+</html>
