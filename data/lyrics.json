@@ -1,0 +1,131 @@
+{
+    "songs": [
+        {
+            "id": "s5",
+            "lyrics": [
+                {
+                    "timeStart": 20,
+                    "timeEnd": 29,
+                    "parts": [
+                        {
+                            "text": "Después de tanto caminar en una vida quizás sin tener una dirección "
+                        },
+                        {
+                            "text": "esculpida",
+                            "voices": [
+                                "main",
+                                "backing"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "timeStart": 30,
+                    "timeEnd": 38,
+                    "parts": [
+                        {
+                            "text": "Cansado de miles de intentos, caídas y tropiezos que hoy solo inspiran"
+                        }
+                    ]
+                },
+                {
+                    "timeStart": 39,
+                    "timeEnd": 42,
+                    "parts": [
+                        {
+                            "text": "pasión",
+                            "voices": [
+                                "main",
+                                "backing"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "timeStart": 49,
+                    "timeEnd": 58,
+                    "parts": [
+                        {
+                            "text": "Poder arriesgarse y haberlo intentarlo después de tanto caer "
+                        },
+                        {
+                            "text": "y tantos golpes",
+                            "voices": [
+                                "main",
+                                "backing"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "timeStart": 59,
+                    "timeEnd": 70,
+                    "parts": [
+                        {
+                            "text": "La respuesta podría ser que puede ser "
+                        },
+                        {
+                            "text": "mejor",
+                            "voices": [
+                                "main",
+                                "backing"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "timeStart": 92,
+                    "timeEnd": 101,
+                    "parts": [
+                        {
+                            "text": "Caída tras caída la victoria está en poderse levantar, sacudir el polvo y volver a empezar",
+                            "voices": [
+                                "main",
+                                "backing"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "timeStart": 101,
+                    "timeEnd": 113,
+                    "parts": [
+                        {
+                            "text": "Caída tras caída la victoria está en poderse levantar, sacudir el polvo y volver a empezar",
+                            "voices": [
+                                "main",
+                                "backing"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "timeStart": 155,
+                    "timeEnd": 165,
+                    "parts": [
+                        {
+                            "text": "Caída tras caída la victoria está en poderse levantar, sacudir el polvo y volver a empezar",
+                            "voices": [
+                                "main",
+                                "backing"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "timeStart": 165,
+                    "timeEnd": 178,
+                    "parts": [
+                        {
+                            "text": "Caída tras caída la victoria está en poderse levantar, sacudir el polvo y volver a empezar",
+                            "voices": [
+                                "main",
+                                "backing"
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

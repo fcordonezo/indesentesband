@@ -15,6 +15,11 @@ const state = {
     isMuted: false,
     repeat: false,
     shuffle: false,
+    lyricsVisible: true,
+    lyricsTrackId: null,
+    lyricsRenderKey: null,
+    lyricsCurrentKey: null,
+    lyricsTransitionTimer: null,
     accordionState: null,
     scrollPosition: 0,
     songListScrollPosition: 0,
@@ -28,6 +33,8 @@ const state = {
 };
 
 const EVENT_TIME_ZONE = "America/Bogota";
+const LYRIC_SILENCE_GAP_THRESHOLD = 5;
+const LYRIC_TRANSITION_DURATION = 500;
 
 document.addEventListener("DOMContentLoaded", initApp);
 
@@ -50,13 +57,14 @@ async function initApp() {
       if (section === "home" || section === "epk" || state.data[section]) renderSection(section, false);
     });
 
-    const [music, events, about, contact] = await Promise.all([
+    const [music, lyrics, events, about, contact] = await Promise.all([
       fetch("data/music.json").then((res) => res.json()),
+      fetch("data/lyrics.json").then((res) => res.json()),
       fetch("data/events.json").then((res) => res.json()),
       fetch("data/about.json").then((res) => res.json()),
       fetch("data/contact.json").then((res) => res.json()),
     ]);
-    state.data = { site, home, music, events, about, contact };
+    state.data = { site, home, music, lyrics, events, about, contact };
     bindAudioEvents();
     startEventClock();
 
@@ -303,8 +311,18 @@ function renderMusic() {
 
   if (currentSong) {
     state.music.currentTrackId = currentSong.id;
+    if (state.music.lyricsTrackId !== currentSong.id) {
+      state.music.lyricsTrackId = currentSong.id;
+      state.music.lyricsVisible = true;
+      state.music.lyricsRenderKey = null;
+      state.music.lyricsCurrentKey = null;
+      window.clearTimeout(state.music.lyricsTransitionTimer);
+      state.music.lyricsTransitionTimer = null;
+    }
   }
 
+  const songLyrics = getLyricsForTrack(currentSong.id);
+  const hasLyrics = songLyrics.length > 0;
   const albumGroups = groupSongsByAlbum(songs);
   const selectedAlbumLabel = state.music.album === "all" ? "Todos los álbumes" : state.music.album;
 
@@ -357,6 +375,33 @@ function renderMusic() {
               </div>
               <input id="timeline" class="progress-bar" type="range" min="0" max="100" value="0" />
             </div>
+          </div>
+
+          <div class="lyrics-tools">
+            <button
+              id="lyrics-toggle"
+              class="lyrics-toggle"
+              type="button"
+              aria-pressed="${hasLyrics && state.music.lyricsVisible}"
+              ${hasLyrics ? "" : "disabled"}
+            >${hasLyrics ? (state.music.lyricsVisible ? "Ocultar letras" : "Mostrar letras") : "Letras no disponibles"}</button>
+          </div>
+          <div
+            id="lyrics-panel"
+            class="lyrics-panel"
+            aria-label="Letras sincronizadas"
+            ${hasLyrics && state.music.lyricsVisible ? "" : "hidden"}
+          >
+            ${hasLyrics
+      ? `
+        <div class="lyrics-roll-window">
+          <div class="lyrics-roll-slot" data-lyrics-slot="previous"></div>
+          <div class="lyrics-roll-slot" data-lyrics-slot="current" aria-live="polite" aria-atomic="true"></div>
+          <div class="lyrics-roll-slot" data-lyrics-slot="next"></div>
+        </div>
+        <div class="lyrics-backing-lines" data-lyrics-slot="backing"></div>
+      `
+      : '<p class="lyrics-unavailable">Aún no hay letras publicadas para esta canción.</p>'}
           </div>
         </div>
 
@@ -438,6 +483,7 @@ function renderMusic() {
   `;
 
   bindMusicEvents();
+  updateLyricsDisplay(true);
 
   if (state.music.loadedTrackId !== currentSong.id) {
     setAudioTrack(currentSong);
@@ -479,6 +525,18 @@ function restoreMusicViewState() {
 }
 
 function bindMusicEvents() {
+  const lyricsToggle = document.getElementById("lyrics-toggle");
+  if (lyricsToggle && !lyricsToggle.disabled) {
+    lyricsToggle.addEventListener("click", () => {
+      state.music.lyricsVisible = !state.music.lyricsVisible;
+      const lyricsPanel = document.getElementById("lyrics-panel");
+      lyricsPanel.hidden = !state.music.lyricsVisible;
+      lyricsToggle.setAttribute("aria-pressed", String(state.music.lyricsVisible));
+      lyricsToggle.textContent = state.music.lyricsVisible ? "Ocultar letras" : "Mostrar letras";
+      if (state.music.lyricsVisible) updateLyricsDisplay(true);
+    });
+  }
+
   document.querySelectorAll(".filter-button[data-category]").forEach((button) => {
     button.addEventListener("click", () => {
       state.music.category = button.dataset.category;
@@ -840,6 +898,174 @@ function updateProgressDisplay() {
   timeline.value = Number.isFinite(progress) ? progress : 0;
   currentTime.textContent = formatTime(state.audio.currentTime);
   totalTime.textContent = duration ? formatTime(duration) : "0:00";
+  updateLyricsDisplay();
+}
+
+function getLyricsForTrack(trackId) {
+  return state.data.lyrics?.songs.find((song) => song.id === trackId)?.lyrics || [];
+}
+
+function isBackingOnlyLyric(line) {
+  return line.voice === "backing"
+    || (line.parts?.length > 0 && line.parts.every((part) =>
+      Array.isArray(part.voices) && part.voices.includes("backing") && !part.voices.includes("main")
+    ));
+}
+
+function escapeHtml(text) {
+  return String(text).replace(/[&<>"']/g, (character) => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#39;",
+  })[character]);
+}
+
+function renderLyricLine(line, className) {
+  const parts = line.parts || [];
+  const content = parts.map((part) => {
+    const voices = Array.isArray(part.voices) ? part.voices : [];
+    const isUnison = voices.includes("main") && voices.includes("backing");
+    const isBacking = voices.includes("backing") && !voices.includes("main");
+    const partClass = isUnison ? "lyric-unison" : isBacking ? "lyric-backing" : "";
+    const text = escapeHtml(part.text || "");
+    return partClass
+      ? `<span class="${partClass}" title="${isUnison ? "Cantado por ambas voces" : "Voz de backing"}">${text}</span>`
+      : text;
+  }).join("");
+
+  const backingOnly = isBackingOnlyLyric(line);
+  const text = backingOnly ? `<span class="lyric-backing">(${content})</span>` : content;
+  return `<div class="${className}${backingOnly ? " lyric-role-backing" : ""}">${text}</div>`;
+}
+
+function renderLyricsRollItem(item, className) {
+  if (!item) return "";
+  if (item.isSilence) {
+    return '<span class="lyrics-instrumental" aria-label="Parte instrumental">♪</span>';
+  }
+  return renderLyricLine(item, className);
+}
+
+function updateLyricsDisplay(force = false) {
+  const lyricsPanel = document.getElementById("lyrics-panel");
+  if (!lyricsPanel || lyricsPanel.hidden || !state.music.currentTrackId) return;
+
+  const lyricLines = getLyricsForTrack(state.music.currentTrackId)
+    .map((line, index) => ({ ...line, lyricIndex: index }))
+    .sort((a, b) => a.timeStart - b.timeStart);
+  const currentTime = state.audio.currentTime || 0;
+  const activeAtTime = (line) => currentTime >= line.timeStart && currentTime < line.timeEnd;
+  const mainLines = lyricLines.filter((line) => !isBackingOnlyLyric(line));
+  const backingLines = lyricLines.filter(isBackingOnlyLyric);
+  const rollItems = [];
+
+  mainLines.forEach((line, index) => {
+    if (index > 0) {
+      const previousLine = mainLines[index - 1];
+      if (line.timeStart - previousLine.timeEnd >= LYRIC_SILENCE_GAP_THRESHOLD) {
+        rollItems.push({
+          isSilence: true,
+          timeStart: previousLine.timeEnd,
+          timeEnd: line.timeStart,
+          sequenceKey: `silence-${previousLine.lyricIndex}-${line.lyricIndex}`,
+        });
+      }
+    }
+
+    rollItems.push({ ...line, sequenceKey: `line-${line.lyricIndex}` });
+  });
+
+  let currentItem = rollItems.find(activeAtTime) || null;
+  let currentItemIndex = currentItem ? rollItems.indexOf(currentItem) : -1;
+
+  if (!currentItem) {
+    const previousIndex = rollItems.findLastIndex((item) => item.timeEnd <= currentTime);
+    const followingItem = rollItems.find((item) => item.timeStart > currentTime) || null;
+    const previousItem = previousIndex >= 0 ? rollItems[previousIndex] : null;
+    if (
+      previousItem
+      && !previousItem.isSilence
+      && followingItem
+      && !followingItem.isSilence
+      && followingItem.timeStart - previousItem.timeEnd < LYRIC_SILENCE_GAP_THRESHOLD
+    ) {
+      currentItem = previousItem;
+      currentItemIndex = previousIndex;
+    }
+  }
+
+  const currentMain = currentItem && !currentItem.isSilence ? currentItem : null;
+  const previous = currentItemIndex > 0
+    ? rollItems[currentItemIndex - 1]
+    : rollItems.findLast((item) => item.timeEnd <= currentTime) || null;
+  const next = currentItemIndex >= 0
+    ? rollItems[currentItemIndex + 1] || null
+    : rollItems.find((item) => item.timeStart > currentTime) || null;
+  const activeBacking = backingLines.filter(activeAtTime);
+  const previousForDisplay = previous;
+  const activeBackingIds = activeBacking.map((line) => line.lyricIndex).join(",");
+  const renderKey = [
+    currentItem?.sequenceKey ?? "silence",
+    activeBackingIds,
+    previousForDisplay?.sequenceKey ?? "",
+    next?.sequenceKey ?? "",
+  ].join(":");
+  if (!force && renderKey === state.music.lyricsRenderKey) return;
+
+  const previousSlot = lyricsPanel.querySelector('[data-lyrics-slot="previous"]');
+  const currentSlot = lyricsPanel.querySelector('[data-lyrics-slot="current"]');
+  const backingSlot = lyricsPanel.querySelector('[data-lyrics-slot="backing"]');
+  const nextSlot = lyricsPanel.querySelector('[data-lyrics-slot="next"]');
+  const currentDisplayKey = currentMain
+    ? currentItem.sequenceKey
+    : activeBacking.length
+      ? `backing:${activeBackingIds}`
+      : currentItem?.sequenceKey || "silence";
+  const shouldAnimate = !force
+    && state.music.lyricsCurrentKey !== null
+    && state.music.lyricsCurrentKey !== currentDisplayKey
+
+  window.clearTimeout(state.music.lyricsTransitionTimer);
+  state.music.lyricsTransitionTimer = null;
+  [previousSlot, currentSlot, nextSlot].forEach((slot) => {
+    slot.classList.remove("lyrics-roll-previous", "lyrics-roll-current", "lyrics-roll-next");
+  });
+
+  state.music.lyricsRenderKey = renderKey;
+  state.music.lyricsCurrentKey = currentDisplayKey;
+
+  const renderLyricsSlots = () => {
+    previousSlot.innerHTML = renderLyricsRollItem(previousForDisplay, "lyrics-neighbor-line");
+    currentSlot.innerHTML = currentMain
+      ? renderLyricLine(currentMain, "lyrics-current-line")
+      : activeBacking.length
+        ? activeBacking.map((line) => renderLyricLine(line, "lyrics-current-line")).join("")
+        : '<span class="lyrics-instrumental" aria-label="Parte instrumental">♪</span>';
+    backingSlot.innerHTML = currentMain
+      ? activeBacking.map((line) => renderLyricLine(line, "lyrics-backing-line")).join("")
+      : "";
+    nextSlot.innerHTML = renderLyricsRollItem(next, "lyrics-neighbor-line");
+  };
+
+  if (shouldAnimate) {
+    previousSlot.classList.add("lyrics-roll-previous");
+    currentSlot.classList.add("lyrics-roll-current");
+    nextSlot.classList.add("lyrics-roll-next");
+    const transitionDuration = window.matchMedia("(prefers-reduced-motion: reduce)").matches
+      ? 1
+      : LYRIC_TRANSITION_DURATION;
+    state.music.lyricsTransitionTimer = window.setTimeout(() => {
+      renderLyricsSlots();
+      [previousSlot, currentSlot, nextSlot].forEach((slot) => {
+        slot.classList.remove("lyrics-roll-previous", "lyrics-roll-current", "lyrics-roll-next");
+      });
+      state.music.lyricsTransitionTimer = null;
+    }, transitionDuration);
+  } else {
+    renderLyricsSlots();
+  }
 }
 
 function startEventClock() {
