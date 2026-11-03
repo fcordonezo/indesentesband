@@ -17,8 +17,10 @@ const state = {
     shuffle: false,
     lyricsVisible: true,
     lyricsTrackId: null,
+    lyricsMode: "roller",
     lyricsRenderKey: null,
     lyricsCurrentKey: null,
+    lyricsFullActiveKey: null,
     lyricsTransitionTimer: null,
     accordionState: null,
     scrollPosition: 0,
@@ -316,6 +318,7 @@ function renderMusic() {
       state.music.lyricsVisible = true;
       state.music.lyricsRenderKey = null;
       state.music.lyricsCurrentKey = null;
+      state.music.lyricsFullActiveKey = null;
       window.clearTimeout(state.music.lyricsTransitionTimer);
       state.music.lyricsTransitionTimer = null;
     }
@@ -378,13 +381,31 @@ function renderMusic() {
           </div>
 
           <div class="lyrics-tools">
+            ${hasLyrics
+      ? `
+            <div class="lyrics-mode-toggle" role="group" aria-label="Modo de visualización de letras">
+              <button
+                class="lyrics-mode-button ${state.music.lyricsMode === "roller" ? "active" : ""}"
+                type="button"
+                data-lyrics-mode="roller"
+                aria-pressed="${state.music.lyricsMode === "roller"}"
+              >Carrete</button>
+              <button
+                class="lyrics-mode-button ${state.music.lyricsMode === "full" ? "active" : ""}"
+                type="button"
+                data-lyrics-mode="full"
+                aria-pressed="${state.music.lyricsMode === "full"}"
+              >Completa</button>
+            </div>
+          `
+      : ""}
             <button
               id="lyrics-toggle"
               class="lyrics-toggle"
               type="button"
               aria-pressed="${hasLyrics && state.music.lyricsVisible}"
               ${hasLyrics ? "" : "disabled"}
-            >${hasLyrics ? (state.music.lyricsVisible ? "Ocultar letras" : "Mostrar letras") : "Letras no disponibles"}</button>
+            >${hasLyrics ? (state.music.lyricsVisible ? "Ocultar letra" : "Mostrar letra") : "Letras no disponibles"}</button>
           </div>
           <div
             id="lyrics-panel"
@@ -394,12 +415,17 @@ function renderMusic() {
           >
             ${hasLyrics
       ? `
-        <div class="lyrics-roll-window">
-          <div class="lyrics-roll-slot" data-lyrics-slot="previous"></div>
-          <div class="lyrics-roll-slot" data-lyrics-slot="current" aria-live="polite" aria-atomic="true"></div>
-          <div class="lyrics-roll-slot" data-lyrics-slot="next"></div>
+        <div class="lyrics-roll-view" ${state.music.lyricsMode === "full" ? "hidden" : ""}>
+          <div class="lyrics-roll-window">
+            <div class="lyrics-roll-slot" data-lyrics-slot="previous"></div>
+            <div class="lyrics-roll-slot" data-lyrics-slot="current" aria-live="polite" aria-atomic="true"></div>
+            <div class="lyrics-roll-slot" data-lyrics-slot="next"></div>
+          </div>
+          <div class="lyrics-backing-lines" data-lyrics-slot="backing"></div>
         </div>
-        <div class="lyrics-backing-lines" data-lyrics-slot="backing"></div>
+        <div class="full-lyrics-list" aria-label="Letra completa" ${state.music.lyricsMode === "full" ? "" : "hidden"}>
+          ${renderFullLyrics(songLyrics)}
+        </div>
       `
       : '<p class="lyrics-unavailable">Aún no hay letras publicadas para esta canción.</p>'}
           </div>
@@ -525,6 +551,23 @@ function restoreMusicViewState() {
 }
 
 function bindMusicEvents() {
+  document.querySelectorAll("[data-lyrics-mode]").forEach((button) => {
+    button.addEventListener("click", () => {
+      state.music.lyricsMode = button.dataset.lyricsMode;
+      const rollerView = document.querySelector(".lyrics-roll-view");
+      const fullLyricsList = document.querySelector(".full-lyrics-list");
+      rollerView.hidden = state.music.lyricsMode !== "roller";
+      fullLyricsList.hidden = state.music.lyricsMode !== "full";
+      document.querySelectorAll("[data-lyrics-mode]").forEach((modeButton) => {
+        const isActive = modeButton.dataset.lyricsMode === state.music.lyricsMode;
+        modeButton.classList.toggle("active", isActive);
+        modeButton.setAttribute("aria-pressed", String(isActive));
+      });
+      if (state.music.lyricsMode === "full") state.music.lyricsFullActiveKey = null;
+      updateLyricsDisplay(true);
+    });
+  });
+
   const lyricsToggle = document.getElementById("lyrics-toggle");
   if (lyricsToggle && !lyricsToggle.disabled) {
     lyricsToggle.addEventListener("click", () => {
@@ -532,7 +575,7 @@ function bindMusicEvents() {
       const lyricsPanel = document.getElementById("lyrics-panel");
       lyricsPanel.hidden = !state.music.lyricsVisible;
       lyricsToggle.setAttribute("aria-pressed", String(state.music.lyricsVisible));
-      lyricsToggle.textContent = state.music.lyricsVisible ? "Ocultar letras" : "Mostrar letras";
+      lyricsToggle.textContent = state.music.lyricsVisible ? "Ocultar letra" : "Mostrar letra";
       if (state.music.lyricsVisible) updateLyricsDisplay(true);
     });
   }
@@ -948,14 +991,57 @@ function renderLyricsRollItem(item, className) {
   return renderLyricLine(item, className);
 }
 
+function renderFullLyrics(lyrics) {
+  return [...lyrics]
+    .map((line, lyricIndex) => ({ ...line, lyricIndex }))
+    .sort((a, b) => a.timeStart - b.timeStart)
+    .map((line) => `
+      <div
+        class="full-lyrics-item"
+        data-full-lyric
+        data-lyric-start="${Number(line.timeStart)}"
+        data-lyric-end="${Number(line.timeEnd)}"
+      >${renderLyricLine(line, "full-lyrics-line")}</div>
+    `)
+    .join("");
+}
+
+function updateFullLyricsDisplay(lyricsPanel, currentTime) {
+  const lyricsList = lyricsPanel.querySelector(".full-lyrics-list");
+  if (!lyricsList || lyricsList.hidden) return;
+
+  const activeItems = [];
+  lyricsList.querySelectorAll("[data-full-lyric]").forEach((item) => {
+    const isActive = currentTime >= Number(item.dataset.lyricStart)
+      && currentTime < Number(item.dataset.lyricEnd);
+    item.classList.toggle("is-active", isActive);
+    if (isActive) activeItems.push(item);
+  });
+
+  const activeKey = activeItems
+    .map((item) => `${item.dataset.lyricStart}-${item.dataset.lyricEnd}`)
+    .join(",");
+  if (activeKey !== state.music.lyricsFullActiveKey && activeItems.length) {
+    const activeItem = activeItems[0];
+    const listTop = lyricsList.getBoundingClientRect().top;
+    const itemTop = activeItem.getBoundingClientRect().top;
+    const itemBottom = activeItem.getBoundingClientRect().bottom;
+    if (itemTop < listTop || itemBottom > listTop + lyricsList.clientHeight) {
+      lyricsList.scrollTop += itemTop - listTop - (lyricsList.clientHeight - activeItem.clientHeight) / 2;
+    }
+  }
+  state.music.lyricsFullActiveKey = activeKey;
+}
+
 function updateLyricsDisplay(force = false) {
   const lyricsPanel = document.getElementById("lyrics-panel");
   if (!lyricsPanel || lyricsPanel.hidden || !state.music.currentTrackId) return;
 
+  const currentTime = state.audio.currentTime || 0;
+  updateFullLyricsDisplay(lyricsPanel, currentTime);
   const lyricLines = getLyricsForTrack(state.music.currentTrackId)
     .map((line, index) => ({ ...line, lyricIndex: index }))
     .sort((a, b) => a.timeStart - b.timeStart);
-  const currentTime = state.audio.currentTime || 0;
   const activeAtTime = (line) => currentTime >= line.timeStart && currentTime < line.timeEnd;
   const mainLines = lyricLines.filter((line) => !isBackingOnlyLyric(line));
   const backingLines = lyricLines.filter(isBackingOnlyLyric);
@@ -1025,7 +1111,7 @@ function updateLyricsDisplay(force = false) {
       : currentItem?.sequenceKey || "silence";
   const shouldAnimate = !force
     && state.music.lyricsCurrentKey !== null
-    && state.music.lyricsCurrentKey !== currentDisplayKey
+    && state.music.lyricsCurrentKey !== currentDisplayKey;
 
   window.clearTimeout(state.music.lyricsTransitionTimer);
   state.music.lyricsTransitionTimer = null;

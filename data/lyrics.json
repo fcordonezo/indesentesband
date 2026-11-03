@@ -1,131 +1,1851 @@
 {
-    "songs": [
+  "songs": [
+    {
+      "id": "s1",
+      "lyrics": [
         {
-            "id": "s5",
-            "lyrics": [
-                {
-                    "timeStart": 20,
-                    "timeEnd": 29,
-                    "parts": [
-                        {
-                            "text": "Después de tanto caminar en una vida quizás sin tener una dirección "
-                        },
-                        {
-                            "text": "esculpida",
-                            "voices": [
-                                "main",
-                                "backing"
-                            ]
-                        }
-                    ]
-                },
-                {
-                    "timeStart": 30,
-                    "timeEnd": 38,
-                    "parts": [
-                        {
-                            "text": "Cansado de miles de intentos, caídas y tropiezos que hoy solo inspiran"
-                        }
-                    ]
-                },
-                {
-                    "timeStart": 39,
-                    "timeEnd": 42,
-                    "parts": [
-                        {
-                            "text": "pasión",
-                            "voices": [
-                                "main",
-                                "backing"
-                            ]
-                        }
-                    ]
-                },
-                {
-                    "timeStart": 49,
-                    "timeEnd": 58,
-                    "parts": [
-                        {
-                            "text": "Poder arriesgarse y haberlo intentarlo después de tanto caer "
-                        },
-                        {
-                            "text": "y tantos golpes",
-                            "voices": [
-                                "main",
-                                "backing"
-                            ]
-                        }
-                    ]
-                },
-                {
-                    "timeStart": 59,
-                    "timeEnd": 70,
-                    "parts": [
-                        {
-                            "text": "La respuesta podría ser que puede ser "
-                        },
-                        {
-                            "text": "mejor",
-                            "voices": [
-                                "main",
-                                "backing"
-                            ]
-                        }
-                    ]
-                },
-                {
-                    "timeStart": 92,
-                    "timeEnd": 101,
-                    "parts": [
-                        {
-                            "text": "Caída tras caída la victoria está en poderse levantar, sacudir el polvo y volver a empezar",
-                            "voices": [
-                                "main",
-                                "backing"
-                            ]
-                        }
-                    ]
-                },
-                {
-                    "timeStart": 101,
-                    "timeEnd": 113,
-                    "parts": [
-                        {
-                            "text": "Caída tras caída la victoria está en poderse levantar, sacudir el polvo y volver a empezar",
-                            "voices": [
-                                "main",
-                                "backing"
-                            ]
-                        }
-                    ]
-                },
-                {
-                    "timeStart": 155,
-                    "timeEnd": 165,
-                    "parts": [
-                        {
-                            "text": "Caída tras caída la victoria está en poderse levantar, sacudir el polvo y volver a empezar",
-                            "voices": [
-                                "main",
-                                "backing"
-                            ]
-                        }
-                    ]
-                },
-                {
-                    "timeStart": 165,
-                    "timeEnd": 178,
-                    "parts": [
-                        {
-                            "text": "Caída tras caída la victoria está en poderse levantar, sacudir el polvo y volver a empezar",
-                            "voices": [
-                                "main",
-                                "backing"
-                            ]
-                        }
-                    ]
-                }
-            ]
+          "timeStart": 92,
+          "timeEnd": 102,
+          "parts": [
+            {
+              "text": "No queda más que aceptar mi responsabilidad, si es lo que quieres"
+            }
+          ]
+        },
+        {
+          "timeStart": 102,
+          "timeEnd": 108,
+          "parts": [
+            {
+              "text": "En ocasiones sientes que tu vida no va más"
+            }
+          ]
+        },
+        {
+          "timeStart": 108,
+          "timeEnd": 112,
+          "parts": [
+            {
+              "text": "porque no hay rumbo ni futuro",
+              "voices": [
+                "main",
+                "backing"
+              ]
+            }
+          ]
+        },
+        {
+          "timeStart": 112,
+          "timeEnd": 117,
+          "parts": [
+            {
+              "text": "Cerrar los ojos es lo que quieres"
+            }
+          ]
+        },
+        {
+          "timeStart": 119,
+          "timeEnd": 127,
+          "parts": [
+            {
+              "text": "Abrirlos cuando ya todo haya terminado y ya nada"
+            }
+          ]
+        },
+        {
+          "timeStart": 128,
+          "timeEnd": 131,
+          "parts": [
+            {
+              "text": "y ya nada se pueda hacer",
+              "voices": [
+                "main",
+                "backing"
+              ]
+            }
+          ]
+        },
+        {
+          "timeStart": 154,
+          "timeEnd": 163,
+          "parts": [
+            {
+              "text": "No ser trofeo para luego fundirme con asfalto y ser pisoteado"
+            }
+          ]
+        },
+        {
+          "timeStart": 164,
+          "timeEnd": 173,
+          "parts": [
+            {
+              "text": "a cada paso debajo de las enormes industrias"
+            }
+          ]
+        },
+        {
+          "timeStart": 173,
+          "timeEnd": 179,
+          "parts": [
+            {
+              "text": "No es lo que quiero yo, no es lo que yo pedí"
+            }
+          ]
+        },
+        {
+          "timeStart": 184,
+          "timeEnd": 195,
+          "parts": [
+            {
+              "text": "Las palabras de la gente me resbalan siempre y cuando "
+            },
+            {
+              "text": "no toquen mi alma",
+              "voices": [
+                "main",
+                "backing"
+              ]
+            }
+          ]
+        },
+        {
+          "timeStart": 197,
+          "timeEnd": 201,
+          "parts": [
+            {
+              "text": "A ver "
+            },
+            {
+              "text": "si me dejan respirar",
+              "voices": [
+                "main",
+                "backing"
+              ]
+            }
+          ]
+        },
+        {
+          "timeStart": 202,
+          "timeEnd": 208,
+          "parts": [
+            {
+              "text": "a ver si hago igual que los demás",
+              "voices": [
+                "main",
+                "backing"
+              ]
+            }
+          ]
+        },
+        {
+          "timeStart": 208,
+          "timeEnd": 215,
+          "parts": [
+            {
+              "text": "Y dejar mi suerte a la de Dios",
+              "voices": [
+                "main",
+                "backing"
+              ]
+            }
+          ]
+        },
+        {
+          "timeStart": 217,
+          "timeEnd": 222,
+          "parts": [
+            {
+              "text": "A ver "
+            },
+            {
+              "text": "si me dejan respirar",
+              "voices": [
+                "main",
+                "backing"
+              ]
+            }
+          ]
+        },
+        {
+          "timeStart": 222,
+          "timeEnd": 228,
+          "parts": [
+            {
+              "text": "a ver si hago igual que los demás",
+              "voices": [
+                "main",
+                "backing"
+              ]
+            }
+          ]
+        },
+        {
+          "timeStart": 229,
+          "timeEnd": 235,
+          "parts": [
+            {
+              "text": "Y dejar mi suerte a la de Dios",
+              "voices": [
+                "main",
+                "backing"
+              ]
+            }
+          ]
+        },
+        {
+          "timeStart": 279,
+          "timeEnd": 285,
+          "parts": [
+            {
+              "text": "Y dejar mi suerte a la de Dios",
+              "voices": [
+                "main",
+                "backing"
+              ]
+            }
+          ]
+        },
+        {
+          "timeStart": 289,
+          "timeEnd": 295,
+          "parts": [
+            {
+              "text": "Y dejar mi suerte a la de Dios",
+              "voices": [
+                "main",
+                "backing"
+              ]
+            }
+          ]
         }
-    ]
+      ]
+    },
+    {
+      "id": "s2",
+      "lyrics": [
+        {
+          "timeStart": 22,
+          "timeEnd": 28,
+          "parts": [
+            {
+              "text": "Paso el tiempo mirando olas entre el viento que"
+            }
+          ]
+        },
+        {
+          "timeStart": 29,
+          "timeEnd": 31,
+          "parts": [
+            {
+              "text": "estremece mi alma",
+              "voices": [
+                "main",
+                "backing"
+              ]
+            }
+          ]
+        },
+        {
+          "timeStart": 33,
+          "timeEnd": 39,
+          "parts": [
+            {
+              "text": "Paso el tiempo mirando el cielo que opaca la ciudad"
+            }
+          ]
+        },
+        {
+          "timeStart": 40,
+          "timeEnd": 42,
+          "parts": [
+            {
+              "text": "con su miseria",
+              "voices": [
+                "main",
+                "backing"
+              ]
+            }
+          ]
+        },
+        {
+          "timeStart": 43,
+          "timeEnd": 54,
+          "parts": [
+            {
+              "text": "Paso el tiempo tratando tratando de encontrar "
+            },
+            {
+              "text": "una solución",
+              "voices": [
+                "main",
+                "backing"
+              ]
+            }
+          ]
+        },
+        {
+          "timeStart": 54,
+          "timeEnd": 58,
+          "parts": [
+            {
+              "text": "pero no la hay",
+              "voices": [
+                "main",
+                "backing"
+              ]
+            }
+          ]
+        },
+        {
+          "timeStart": 60,
+          "timeEnd": 63,
+          "parts": [
+            {
+              "text": "Pero no la hay",
+              "voices": [
+                "main",
+                "backing"
+              ]
+            }
+          ]
+        },
+        {
+          "timeStart": 86,
+          "timeEnd": 92,
+          "parts": [
+            {
+              "text": "Paso el tiempo mirando olas entre el viento que"
+            }
+          ]
+        },
+        {
+          "timeStart": 93,
+          "timeEnd": 95,
+          "parts": [
+            {
+              "text": "estremece mi alma",
+              "voices": [
+                "main",
+                "backing"
+              ]
+            }
+          ]
+        },
+        {
+          "timeStart": 97,
+          "timeEnd": 103,
+          "parts": [
+            {
+              "text": "Paso el tiempo mirando el cielo que opaca la ciudad"
+            }
+          ]
+        },
+        {
+          "timeStart": 104,
+          "timeEnd": 106,
+          "parts": [
+            {
+              "text": "con su miseria",
+              "voices": [
+                "main",
+                "backing"
+              ]
+            }
+          ]
+        },
+        {
+          "timeStart": 107,
+          "timeEnd": 117,
+          "parts": [
+            {
+              "text": "Paso el tiempo pensando pensando qué hacer "
+            },
+            {
+              "text": "Si me prohíben respirar",
+              "voices": [
+                "main",
+                "backing"
+              ]
+            }
+          ]
+        },
+        {
+          "timeStart": 118,
+          "timeEnd": 122,
+          "parts": [
+            {
+              "text": "cuando en sus mentes solo existe ambición",
+              "voices": [
+                "main",
+                "backing"
+              ]
+            }
+          ]
+        },
+        {
+          "timeStart": 123,
+          "timeEnd": 127,
+          "parts": [
+            {
+              "text": "Cuando en sus manos tu vida ellos tienen",
+              "voices": [
+                "main",
+                "backing"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "s4",
+      "lyrics": [
+        {
+          "timeStart": 25,
+          "timeEnd": 36,
+          "parts": [
+            {
+              "text": "Busco un remedio dentro de mí que me alivie, que me alivie este dolor"
+            }
+          ]
+        },
+        {
+          "timeStart": 37,
+          "timeEnd": 48,
+          "parts": [
+            {
+              "text": "De vez en cuando tu recuerdo me hace daño. De vez en cuando arde mi herida"
+            }
+          ]
+        },
+        {
+          "timeStart": 49,
+          "timeEnd": 60,
+          "parts": [
+            {
+              "text": "¿Cuánto tiempo ha pasado, nena? ¿Ya no recuerdas quién te llevó a sentir?"
+            }
+          ]
+        },
+        {
+          "timeStart": 61,
+          "timeEnd": 73,
+          "parts": [
+            {
+              "text": "¿Ya no recuerdas ese frío en el invierno? y mi calor te brindaba sin dudar"
+            }
+          ]
+        },
+        {
+          "timeStart": 74,
+          "timeEnd": 79,
+          "parts": [
+            {
+              "text": "Nena, desde que te vi, pude tocar el cielo",
+              "voices": [
+                "main",
+                "backing"
+              ]
+            }
+          ]
+        },
+        {
+          "timeStart": 80,
+          "timeEnd": 86,
+          "parts": [
+            {
+              "text": "La manera de mirar, me hacías palpitar",
+              "voices": [
+                "main",
+                "backing"
+              ]
+            }
+          ]
+        },
+        {
+          "timeStart": 86,
+          "timeEnd": 90,
+          "parts": [
+            {
+              "text": "Cada vez que miro el cielo"
+            }
+          ]
+        },
+        {
+          "timeStart": 91,
+          "timeEnd": 100,
+          "parts": [
+            {
+              "text": "La noche era cómplice para estar junto a ti"
+            }
+          ]
+        },
+        {
+          "timeStart": 127,
+          "timeEnd": 138,
+          "parts": [
+            {
+              "text": "Busco un remedio dentro de mí que me alivie, que me alivie este dolor"
+            }
+          ]
+        },
+        {
+          "timeStart": 140,
+          "timeEnd": 151,
+          "parts": [
+            {
+              "text": "De vez en cuando tu recuerdo me hace daño. De vez en cuando arde mi herida"
+            }
+          ]
+        },
+        {
+          "timeStart": 152,
+          "timeEnd": 163,
+          "parts": [
+            {
+              "text": "¿Cuánto tiempo ha pasado, nena? ¿Ya no recuerdas quién te llevó a sentir?"
+            }
+          ]
+        },
+        {
+          "timeStart": 164,
+          "timeEnd": 175,
+          "parts": [
+            {
+              "text": "¿Ya no recuerdas ese frío en el invierno? y mi calor te brindaba sin dudar"
+            }
+          ]
+        },
+        {
+          "timeStart": 176,
+          "timeEnd": 182,
+          "parts": [
+            {
+              "text": "Nena, desde que te vi, pude tocar el cielo",
+              "voices": [
+                "main",
+                "backing"
+              ]
+            }
+          ]
+        },
+        {
+          "timeStart": 182,
+          "timeEnd": 188,
+          "parts": [
+            {
+              "text": "La manera de mirar, me hacías palpitar",
+              "voices": [
+                "main",
+                "backing"
+              ]
+            }
+          ]
+        },
+        {
+          "timeStart": 188,
+          "timeEnd": 193,
+          "parts": [
+            {
+              "text": "Cada vez que miro el cielo"
+            }
+          ]
+        },
+        {
+          "timeStart": 193,
+          "timeEnd": 201,
+          "parts": [
+            {
+              "text": "La noche era cómplice para estar "
+            },
+            {
+              "text": "junto a ti",
+              "voices": [
+                "main",
+                "backing"
+              ]
+            }
+          ]
+        },
+        {
+          "timeStart": 201,
+          "timeEnd": 206,
+          "parts": [
+            {
+              "text": "junto a ti",
+              "voices": [
+                "main",
+                "backing"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "s5",
+      "lyrics": [
+        {
+          "timeStart": 20,
+          "timeEnd": 29,
+          "parts": [
+            {
+              "text": "Después de tanto caminar en una vida quizás sin tener una dirección "
+            },
+            {
+              "text": "esculpida",
+              "voices": [
+                "main",
+                "backing"
+              ]
+            }
+          ]
+        },
+        {
+          "timeStart": 30,
+          "timeEnd": 38,
+          "parts": [
+            {
+              "text": "Cansado de miles de intentos, caídas y tropiezos que hoy solo inspiran"
+            }
+          ]
+        },
+        {
+          "timeStart": 39,
+          "timeEnd": 42,
+          "parts": [
+            {
+              "text": "pasión",
+              "voices": [
+                "main",
+                "backing"
+              ]
+            }
+          ]
+        },
+        {
+          "timeStart": 49,
+          "timeEnd": 58,
+          "parts": [
+            {
+              "text": "Poder arriesgarse y haberlo intentarlo después de tanto caer "
+            },
+            {
+              "text": "y tantos golpes",
+              "voices": [
+                "main",
+                "backing"
+              ]
+            }
+          ]
+        },
+        {
+          "timeStart": 59,
+          "timeEnd": 70,
+          "parts": [
+            {
+              "text": "La respuesta podría ser que puede ser "
+            },
+            {
+              "text": "mejor",
+              "voices": [
+                "main",
+                "backing"
+              ]
+            }
+          ]
+        },
+        {
+          "timeStart": 92,
+          "timeEnd": 101,
+          "parts": [
+            {
+              "text": "Caída tras caída. La victoria está en poderse levantar, sacudir el polvo y volver a empezar",
+              "voices": [
+                "main",
+                "backing"
+              ]
+            }
+          ]
+        },
+        {
+          "timeStart": 101,
+          "timeEnd": 113,
+          "parts": [
+            {
+              "text": "Caída tras caída. La victoria está en poderse levantar, sacudir el polvo y volver a empezar",
+              "voices": [
+                "main",
+                "backing"
+              ]
+            }
+          ]
+        },
+        {
+          "timeStart": 155,
+          "timeEnd": 165,
+          "parts": [
+            {
+              "text": "Caída tras caída. La victoria está en poderse levantar, sacudir el polvo y volver a empezar",
+              "voices": [
+                "main",
+                "backing"
+              ]
+            }
+          ]
+        },
+        {
+          "timeStart": 165,
+          "timeEnd": 178,
+          "parts": [
+            {
+              "text": "Caída tras caída. La victoria está en poderse levantar, sacudir el polvo y volver a empezar",
+              "voices": [
+                "main",
+                "backing"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "s6",
+      "lyrics": [
+        {
+          "timeStart": 19,
+          "timeEnd": 27,
+          "parts": [
+            {
+              "text": "Hoy es un nuevo día en la ciudad y yo salgo a caminar"
+            }
+          ]
+        },
+        {
+          "timeStart": 29,
+          "timeEnd": 37,
+          "parts": [
+            {
+              "text": "Miro la gente, las flores que respiran "
+            },
+            {
+              "text": "y veo el cemento gris",
+              "voices": [
+                "main",
+                "backing"
+              ]
+            }
+          ]
+        },
+        {
+          "timeStart": 39,
+          "timeEnd": 46,
+          "parts": [
+            {
+              "text": "No entiendo como no les da vergüenza "
+            },
+            {
+              "text": "mirarme así",
+              "voices": [
+                "main",
+                "backing"
+              ]
+            }
+          ]
+        },
+        {
+          "timeStart": 48,
+          "timeEnd": 56,
+          "parts": [
+            {
+              "text": "Si yo lo único que he hecho es tener "
+            },
+            {
+              "text": "la cabeza en mi lugar",
+              "voices": [
+                "main",
+                "backing"
+              ]
+            }
+          ]
+        },
+        {
+          "timeStart": 58,
+          "timeEnd": 66,
+          "parts": [
+            {
+              "text": "Cada vez que yo respiro sé que comparto el mismo aire"
+            }
+          ]
+        },
+        {
+          "timeStart": 67,
+          "timeEnd": 75,
+          "parts": [
+            {
+              "text": "Y no, no me da vergüenza saber que el mismo aire está contaminado"
+            }
+          ]
+        },
+        {
+          "timeStart": 77,
+          "timeEnd": 85,
+          "parts": [
+            {
+              "text": "No, no me da vergüenza admitir que vivo en un mundo así"
+            }
+          ]
+        },
+        {
+          "timeStart": 90,
+          "timeEnd": 98,
+          "parts": [
+            {
+              "text": "No entiendo cuál es la jodida razón. Cómo vives, cuánto tienes, cuánto me das",
+              "voices": [
+                "main",
+                "backing"
+              ]
+            }
+          ]
+        },
+        {
+          "timeStart": 100,
+          "timeEnd": 108,
+          "parts": [
+            {
+              "text": "No entiendo cuál es la jodida razón, Cómo vives, cuánto tienes, cuánto me das",
+              "voices": [
+                "main",
+                "backing"
+              ]
+            }
+          ]
+        },
+        {
+          "timeStart": 109,
+          "timeEnd": 118,
+          "parts": [
+            {
+              "text": "No entiendo cuál es la jodida razón. Cómo vives, cuánto tienes, cuánto me das",
+              "voices": [
+                "main",
+                "backing"
+              ]
+            }
+          ]
+        },
+        {
+          "timeStart": 178,
+          "timeEnd": 186,
+          "parts": [
+            {
+              "text": "No entiendo cuál es la jodida razón Cómo vives, cuánto tienes, cuánto me das",
+              "voices": [
+                "main",
+                "backing"
+              ]
+            }
+          ]
+        },
+        {
+          "timeStart": 187,
+          "timeEnd": 196,
+          "parts": [
+            {
+              "text": "No entiendo cuál es la jodida razón. Cómo vives, cuánto tienes, cuánto me das",
+              "voices": [
+                "main",
+                "backing"
+              ]
+            }
+          ]
+        },
+        {
+          "timeStart": 197,
+          "timeEnd": 206,
+          "parts": [
+            {
+              "text": "No entiendo cuál es la jodida razón. Cómo vives, cuánto tienes, cuánto me das",
+              "voices": [
+                "main",
+                "backing"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "s7",
+      "lyrics": [
+        {
+          "timeStart": 37,
+          "timeEnd": 46,
+          "parts": [
+            {
+              "text": "Si me pierdo en el rincón de los sueños reprimidos, es cuestión de inculcarte "
+            },
+            {
+              "text": "qué está bien y qué está mal",
+              "voices": [
+                "main",
+                "backing"
+              ]
+            }
+          ]
+        },
+        {
+          "timeStart": 47,
+          "timeEnd": 55,
+          "parts": [
+            {
+              "text": "Madrugaste, se hizo tarde. La ruta de esa vida a todo sera igual"
+            }
+          ]
+        },
+        {
+          "timeStart": 56,
+          "timeEnd": 61,
+          "parts": [
+            {
+              "text": "¿Cuál es siempre el mismo problema? ¿Cuál es?"
+            }
+          ]
+        },
+        {
+          "timeStart": 62,
+          "timeEnd": 65,
+          "parts": [
+            {
+              "text": "Siempre es igualdad"
+            }
+          ]
+        },
+        {
+          "timeStart": 65,
+          "timeEnd": 69,
+          "parts": [
+            {
+              "text": "No es que pierda la cabeza de repente"
+            }
+          ]
+        },
+        {
+          "timeStart": 69,
+          "timeEnd": 75,
+          "parts": [
+            {
+              "text": "No es que pierda la necesidad de sentir"
+            }
+          ]
+        },
+        {
+          "timeStart": 75,
+          "timeEnd": 84,
+          "parts": [
+            {
+              "text": "Se me escapa el tiempo entre las "
+            },
+            {
+              "text": "manecillas de un reloj que está por estallar",
+              "voices": [
+                "main",
+                "backing"
+              ]
+            }
+          ]
+        },
+        {
+          "timeStart": 85,
+          "timeEnd": 93,
+          "parts": [
+            {
+              "text": "No es difícil entender "
+            },
+            {
+              "text": "que el destino siempre a la suerte",
+              "voices": [
+                "main",
+                "backing"
+              ]
+            }
+          ]
+        },
+        {
+          "timeStart": 93,
+          "timeEnd": 98,
+          "parts": [
+            {
+              "text": "Que la vida es un frenesí",
+              "voices": [
+                "main",
+                "backing"
+              ]
+            }
+          ]
+        },
+        {
+          "timeStart": 154,
+          "timeEnd": 163,
+          "parts": [
+            {
+              "text": "Si me pierdo en el rincón de los sueños reprimidos es cuestión de inculcarte "
+            },
+            {
+              "text": "qué está bien y qué está mal",
+              "voices": [
+                "main",
+                "backing"
+              ]
+            }
+          ]
+        },
+        {
+          "timeStart": 163,
+          "timeEnd": 171,
+          "parts": [
+            {
+              "text": "Madrugaste, se hizo tarde. La ruta de esa vida a todo sera igual"
+            }
+          ]
+        },
+        {
+          "timeStart": 173,
+          "timeEnd": 178,
+          "parts": [
+            {
+              "text": "¿Cuál es siempre el mismo problema? ¿Cuál es?"
+            }
+          ]
+        },
+        {
+          "timeStart": 179,
+          "timeEnd": 181,
+          "parts": [
+            {
+              "text": "Siempre es igualdad"
+            }
+          ]
+        },
+        {
+          "timeStart": 182,
+          "timeEnd": 186,
+          "parts": [
+            {
+              "text": "No es que pierda la cabeza de repente"
+            }
+          ]
+        },
+        {
+          "timeStart": 186,
+          "timeEnd": 191,
+          "parts": [
+            {
+              "text": "No es que pierda la necesidad de sentir"
+            }
+          ]
+        },
+        {
+          "timeStart": 212,
+          "timeEnd": 221,
+          "parts": [
+            {
+              "text": "Se me escapa el tiempo entre las "
+            },
+            {
+              "text": "manecillas de un reloj que está por estallar",
+              "voices": [
+                "main",
+                "backing"
+              ]
+            }
+          ]
+        },
+        {
+          "timeStart": 222,
+          "timeEnd": 230,
+          "parts": [
+            {
+              "text": "No es difícil entender "
+            },
+            {
+              "text": "que el destino siempre a la suerte",
+              "voices": [
+                "main",
+                "backing"
+              ]
+            }
+          ]
+        },
+        {
+          "timeStart": 230,
+          "timeEnd": 234,
+          "parts": [
+            {
+              "text": "Que la vida es un frenesí",
+              "voices": [
+                "main",
+                "backing"
+              ]
+            }
+          ]
+        },
+        {
+          "timeStart": 235,
+          "timeEnd": 239,
+          "parts": [
+            {
+              "text": "que el destino siempre a la suerte",
+              "voices": [
+                "main",
+                "backing"
+              ]
+            }
+          ]
+        },
+        {
+          "timeStart": 240,
+          "timeEnd": 244,
+          "parts": [
+            {
+              "text": "Que la vida es un frenesí",
+              "voices": [
+                "main",
+                "backing"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "s8",
+      "lyrics": [
+        {
+          "timeStart": 17,
+          "timeEnd": 24,
+          "parts": [
+            {
+              "text": "Deambulo por las calles de mi "
+            },
+            {
+              "text": "soledad",
+              "voices": [
+                "main",
+                "backing"
+              ]
+            }
+          ]
+        },
+        {
+          "timeStart": 26,
+          "timeEnd": 33,
+          "parts": [
+            {
+              "text": "Hoy puedo ver que el cielo se hace gris y el aire no es lo mismo"
+            }
+          ]
+        },
+        {
+          "timeStart": 35,
+          "timeEnd": 41,
+          "parts": [
+            {
+              "text": "No controlo mi manera de pensar"
+            }
+          ]
+        },
+        {
+          "timeStart": 43,
+          "timeEnd": 51,
+          "parts": [
+            {
+              "text": "No controlo mi manera de soñar"
+            }
+          ]
+        },
+        {
+          "timeStart": 52,
+          "timeEnd": 60,
+          "parts": [
+            {
+              "text": "No es fácil vivir con la ironía de tener que andar siempre en lo mismo",
+              "voices": [
+                "main",
+                "backing"
+              ]
+            }
+          ]
+        },
+        {
+          "timeStart": 61,
+          "timeEnd": 68,
+          "parts": [
+            {
+              "text": "No, no es fácil aceptar sencillamente la realidad",
+              "voices": [
+                "main",
+                "backing"
+              ]
+            }
+          ]
+        },
+        {
+          "timeStart": 70,
+          "timeEnd": 76,
+          "parts": [
+            {
+              "text": "No controlo mi manera de pensar"
+            }
+          ]
+        },
+        {
+          "timeStart": 78,
+          "timeEnd": 85,
+          "parts": [
+            {
+              "text": "No controlo mi manera de soñar"
+            }
+          ]
+        },
+        {
+          "timeStart": 122,
+          "timeEnd": 129,
+          "parts": [
+            {
+              "text": "Deambulo por las calles de mi soledad",
+              "voices": [
+                "main",
+                "backing"
+              ]
+            }
+          ]
+        },
+        {
+          "timeStart": 131,
+          "timeEnd": 138,
+          "parts": [
+            {
+              "text": "Hoy puedo ver que el cielo se hace gris y el aire no es lo mismo",
+              "voices": [
+                "main",
+                "backing"
+              ]
+            }
+          ]
+        },
+        {
+          "timeStart": 139,
+          "timeEnd": 146,
+          "parts": [
+            {
+              "text": "No controlo mi manera de pensar"
+            }
+          ]
+        },
+        {
+          "timeStart": 148,
+          "timeEnd": 156,
+          "parts": [
+            {
+              "text": "Yo ya, yo ya no puedo "
+            },
+            {
+              "text": "vivir en paz",
+              "voices": [
+                "main",
+                "backing"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "s10",
+      "lyrics": [
+        {
+          "timeStart": 18,
+          "timeEnd": 24,
+          "parts": [
+            {
+              "text": "Yo solo soy un mendigo, siempre por callejones buscando algún lugar"
+            }
+          ]
+        },
+        {
+          "timeStart": 24,
+          "timeEnd": 26,
+          "parts": [
+            {
+              "text": "buscando aquellos besos",
+              "voices": [
+                "main",
+                "backing"
+              ]
+            }
+          ]
+        },
+        {
+          "timeStart": 26,
+          "timeEnd": 32,
+          "parts": [
+            {
+              "text": "Esclavo de la vida … que encuentro en la basura"
+            }
+          ]
+        },
+        {
+          "timeStart": 34,
+          "timeEnd": 42,
+          "parts": [
+            {
+              "text": "Metido entre esquinas cubriéndome del frío con cartones que trae el viento"
+            }
+          ]
+        },
+        {
+          "timeStart": 43,
+          "timeEnd": 50,
+          "parts": [
+            {
+              "text": "Cansado del olvido. Mojado por la lluvia de la ilusión por quererte"
+            }
+          ]
+        },
+        {
+          "timeStart": 50,
+          "timeEnd": 57,
+          "parts": [
+            {
+              "text": "Mendigo limosnero de amor esperando migajas de amor"
+            }
+          ]
+        },
+        {
+          "timeStart": 58,
+          "timeEnd": 65,
+          "parts": [
+            {
+              "text": "Mendigo. Yo solo soy un mendigo. Mendigo "
+            },
+            {
+              "text": "si no tengo tu abrigo",
+              "voices": [
+                "backing"
+              ]
+            }
+          ]
+        },
+        {
+          "timeStart": 65,
+          "timeEnd": 69,
+          "parts": [
+            {
+              "text": "Mendigo. Yo solo soy un mendigo"
+            }
+          ]
+        },
+        {
+          "timeStart": 69,
+          "timeEnd": 73,
+          "parts": [
+            {
+              "text": "¡Mendigo!",
+              "voices": [
+                "main",
+                "backing"
+              ]
+            }
+          ]
+        },
+        {
+          "timeStart": 88,
+          "timeEnd": 95,
+          "parts": [
+            {
+              "text": "Cansado del olvido. Mojado por la lluvia de la ilusión por quererte"
+            }
+          ]
+        },
+        {
+          "timeStart": 95,
+          "timeEnd": 103,
+          "parts": [
+            {
+              "text": "Mendigo limosnero de amor esperando migajas de amor"
+            }
+          ]
+        },
+        {
+          "timeStart": 103,
+          "timeEnd": 110,
+          "parts": [
+            {
+              "text": "Mendigo. Yo solo soy un mendigo. Mendigo "
+            },
+            {
+              "text": "si no tengo tu abrigo",
+              "voices": [
+                "backing"
+              ]
+            }
+          ]
+        },
+        {
+          "timeStart": 110,
+          "timeEnd": 114,
+          "parts": [
+            {
+              "text": "Mendigo. Yo solo soy un mendigo"
+            }
+          ]
+        },
+        {
+          "timeStart": 114,
+          "timeEnd": 118,
+          "parts": [
+            {
+              "text": "¡Mendigo!",
+              "voices": [
+                "main",
+                "backing"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "s11",
+      "lyrics": [
+        {
+          "timeStart": 46,
+          "timeEnd": 57,
+          "parts": [
+            {
+              "text": "No encuentro las palabras que por casualidad "
+            },
+            {
+              "text": "se las llevó la razón que con el tiempo empeoró",
+              "voices": [
+                "main",
+                "backing"
+              ]
+            }
+          ]
+        },
+        {
+          "timeStart": 57,
+          "timeEnd": 67,
+          "parts": [
+            {
+              "text": "La melancolía es confidente de las penas "
+            },
+            {
+              "text": "que a diario cobran vida para deborarme",
+              "voices": [
+                "main",
+                "backing"
+              ]
+            }
+          ]
+        },
+        {
+          "timeStart": 67,
+          "timeEnd": 76,
+          "parts": [
+            {
+              "text": "Y cada vez que intento irme más allá "
+            },
+            {
+              "text": "siento piedras que arrastro",
+              "voices": [
+                "main",
+                "backing"
+              ]
+            }
+          ]
+        },
+        {
+          "timeStart": 96,
+          "timeEnd": 107,
+          "parts": [
+            {
+              "text": "Desperté en el suelo que del techo resbalé "
+            },
+            {
+              "text": "y mi cabeza estaba a punto de estallar",
+              "voices": [
+                "main",
+                "backing"
+              ]
+            }
+          ]
+        },
+        {
+          "timeStart": 107,
+          "timeEnd": 117,
+          "parts": [
+            {
+              "text": "Del trágico recuerdo de la noche ya pasada. "
+            },
+            {
+              "text": "Pasada de tragos con amigos, casi hermanos",
+              "voices": [
+                "main",
+                "backing"
+              ]
+            }
+          ]
+        },
+        {
+          "timeStart": 117,
+          "timeEnd": 128,
+          "parts": [
+            {
+              "text": "Ya se fue al olvido esa pena moribunda "
+            },
+            {
+              "text": "que se quedó el amigo en el velorio que no fui",
+              "voices": [
+                "main",
+                "backing"
+              ]
+            }
+          ]
+        },
+        {
+          "timeStart": 131,
+          "timeEnd": 134,
+          "parts": [
+            {
+              "text": "Que no fui",
+              "voices": [
+                "main",
+                "backing"
+              ]
+            }
+          ]
+        },
+        {
+          "timeStart": 136,
+          "timeEnd": 138,
+          "parts": [
+            {
+              "text": "Oh no, no"
+            }
+          ]
+        },
+        {
+          "timeStart": 139,
+          "timeEnd": 142,
+          "parts": [
+            {
+              "text": "Oh no, no, no, no, no, no"
+            }
+          ]
+        },
+        {
+          "timeStart": 143,
+          "timeEnd": 150,
+          "parts": [
+            {
+              "text": "Oh no, no, no, no, no"
+            }
+          ]
+        },
+        {
+          "timeStart": 152,
+          "timeEnd": 157,
+          "parts": [
+            {
+              "text": "Soy aquel que despide los susurros momentáneos",
+              "voices": [
+                "main",
+                "backing"
+              ]
+            }
+          ]
+        },
+        {
+          "timeStart": 158,
+          "timeEnd": 163,
+          "parts": [
+            {
+              "text": "en aquel rincón de aquellos besos olvidados",
+              "voices": [
+                "main",
+                "backing"
+              ]
+            }
+          ]
+        },
+        {
+          "timeStart": 164,
+          "timeEnd": 173,
+          "parts": [
+            {
+              "text": "en aquel balcón apuntando a las estrellas donde puedo estar",
+              "voices": [
+                "main",
+                "backing"
+              ]
+            }
+          ]
+        },
+        {
+          "timeStart": 216,
+          "timeEnd": 226,
+          "parts": [
+            {
+              "text": "Vivo esperando que el invierno festeje la alegría en los lugares donde nunca llora el sol"
+            }
+          ]
+        },
+        {
+          "timeStart": 226,
+          "timeEnd": 237,
+          "parts": [
+            {
+              "text": "Vivo esperando que el invierno festeje la alegría en los lugares donde nunca llora el sol",
+              "voices": [
+                "main",
+                "backing"
+              ]
+            }
+          ]
+        },
+        {
+          "timeStart": 239,
+          "timeEnd": 243,
+          "parts": [
+            {
+              "text": "¡Donde nunca llora el sol!",
+              "voices": [
+                "main",
+                "backing"
+              ]
+            }
+          ]
+        },
+        {
+          "timeStart": 244,
+          "timeEnd": 246,
+          "parts": [
+            {
+              "text": "Donde nunca llora el sol",
+              "voices": [
+                "main",
+                "backing"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "s12",
+      "lyrics": [
+        {
+          "timeStart": 16,
+          "timeEnd": 21,
+          "parts": [
+            {
+              "text": "Siempre estoy en busca de llenarme entre vacíos"
+            }
+          ]
+        },
+        {
+          "timeStart": 21,
+          "timeEnd": 26,
+          "parts": [
+            {
+              "text": "con algo de fuerza que me da una realidad",
+              "voices": [
+                "main",
+                "backing"
+              ]
+            }
+          ]
+        },
+        {
+          "timeStart": 27,
+          "timeEnd": 29,
+          "parts": [
+            {
+              "text": "Siempre estarán los muros"
+            }
+          ]
+        },
+        {
+          "timeStart": 30,
+          "timeEnd": 38,
+          "parts": [
+            {
+              "text": "que interponen los que hieren, los que pisan, y que día a día vigilan tu despertar",
+              "voices": [
+                "main",
+                "backing"
+              ]
+            }
+          ]
+        },
+        {
+          "timeStart": 42,
+          "timeEnd": 50,
+          "parts": [
+            {
+              "text": "La lluvia no me sorprende si es por causas del destino y no por ser tu ambición",
+              "voices": [
+                "main",
+                "backing"
+              ]
+            }
+          ]
+        },
+        {
+          "timeStart": 61,
+          "timeEnd": 65,
+          "parts": [
+            {
+              "text": "Hay quien siente que alguien siempre lo está resguardando"
+            }
+          ]
+        },
+        {
+          "timeStart": 66,
+          "timeEnd": 70,
+          "parts": [
+            {
+              "text": "Hay quien piensa que esto no es más que una confusión",
+              "voices": [
+                "main",
+                "backing"
+              ]
+            }
+          ]
+        },
+        {
+          "timeStart": 72,
+          "timeEnd": 73,
+          "parts": [
+            {
+              "text": "Prisiones entre las calles"
+            }
+          ]
+        },
+        {
+          "timeStart": 74,
+          "timeEnd": 82,
+          "parts": [
+            {
+              "text": "La ignorancia no es castigo si te demuestran lo que quieren, si su nombre es corrupción",
+              "voices": [
+                "main",
+                "backing"
+              ]
+            }
+          ]
+        },
+        {
+          "timeStart": 86,
+          "timeEnd": 94,
+          "parts": [
+            {
+              "text": "La lluvia no me sorprende si es por causas del destino y no por ser tu ambición",
+              "voices": [
+                "main",
+                "backing"
+              ]
+            }
+          ]
+        },
+        {
+          "timeStart": 117,
+          "timeEnd": 126,
+          "parts": [
+            {
+              "text": "La lluvia no me sorprende si es por causas del destino y no por ser tu ambición",
+              "voices": [
+                "main",
+                "backing"
+              ]
+            }
+          ]
+        },
+        {
+          "timeStart": 136,
+          "timeEnd": 141,
+          "parts": [
+            {
+              "text": "El camino se calzó de pasos que no alientan"
+            }
+          ]
+        },
+        {
+          "timeStart": 141,
+          "timeEnd": 146,
+          "parts": [
+            {
+              "text": "El trofeo se gastó de manos que lo asechan"
+            }
+          ]
+        },
+        {
+          "timeStart": 146,
+          "timeEnd": 152,
+          "parts": [
+            {
+              "text": "El político se ahogó entre falsas promesas",
+              "voices": [
+                "main",
+                "backing"
+              ]
+            }
+          ]
+        },
+        {
+          "timeStart": 152,
+          "timeEnd": 158,
+          "parts": [
+            {
+              "text": "Y yo sigo una ilusión que escribo entre vacíos",
+              "voices": [
+                "main",
+                "backing"
+              ]
+            }
+          ]
+        },
+        {
+          "timeStart": 184,
+          "timeEnd": 193,
+          "parts": [
+            {
+              "text": "La lluvia no me sorprende si es por causas del destino y no por ser tu ambición",
+              "voices": [
+                "main",
+                "backing"
+              ]
+            }
+          ]
+        },
+        {
+          "timeStart": 195,
+          "timeEnd": 204,
+          "parts": [
+            {
+              "text": "La lluvia no me sorprende si es por causas del destino y no por ser tu ambición",
+              "voices": [
+                "main",
+                "backing"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
 }
