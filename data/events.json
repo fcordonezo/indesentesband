@@ -3,6 +3,22 @@
   "subtitle": "Presentaciones, shows y espacios de encuentro",
   "events": [
     {
+      "name": "Nación Snow Metal",
+      "type": "Toque",
+      "venue": "Carrera 17 # 14A - 43 SUR. Garage Nación Cultural 2° piso, Bogotá",
+      "date": "13 de noviembre",
+      "start": "2026-11-13T21:00:00-05:00",
+      "end": "2026-11-13T24:00:00-05:00",
+      "time": "por definir",
+      "price": "$15.000",
+      "ticketsUrl": "http://wa.me/+573057228659?text=Hola%2E%20Quisiera%20comprar%20boletas%20para%20el%20evento%20Naci%C3%B3n%20Snow%20Metal%20para%20el%20día%2013%20de%20noviembre",
+      "description": "Toque para recaudación de fondos en el <strong><a href='https://www.instagram.com/garagenacioncultural/?hl=es' target='_blank' rel='noreferrer'>Garage Nación Cultural</a></strong> junto a las bandas <strong><a href='https://www.instagram.com/samadeus_officialband/?hl=es' target='_blank' rel='noreferrer'>Samadeus</a></strong>, <strong>D-Code</strong>, <strong><a href='https://www.instagram.com/efecto_crisalida/?hl=es' target='_blank' rel='noreferrer'>Efecto Crisálida</a></strong> y <strong>Violence</strong>.",
+      "flyers": [
+        "assets/events/2026/flyer - nacion snow metal - 13 de noviembre.webp"
+      ],
+      "mapUrl": "https://maps.app.goo.gl/hjQSS98JYc6GRit19"
+    },
+    {
       "name": "Off the Radar",
       "type": "Toque",
       "venue": "Calle 15 Sur # 19 - 12, Cebra's Bags, Bogotá",
@@ -14,7 +30,7 @@
       "ticketsUrl": "",
       "description": "Toque en el bar privado de Fenix junto a la banda de metalcore <strong><a href='https://www.instagram.com/underredbloodskies/?hl=es' target='_blank' rel='noreferrer'>Under Red Blood Skies</a></strong>",
       "flyers": [
-        "assets/events/2026/flyer - off the radar - 24 de octubre.jpg"
+        "assets/events/2026/flyer - off the radar - 24 de octubre.webp"
       ],
       "mapUrl": "https://maps.app.goo.gl/utZbKuYXjhtmFbRk6"
     },
