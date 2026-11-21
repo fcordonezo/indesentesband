@@ -12,7 +12,8 @@
       "duration": "5:06",
       "image": "assets/muerto en vida.webp",
       "order": 1,
-      "src": "music/muerto en vida/igual que los demas.mp3"
+      "src": "music/muerto en vida/igual que los demas.mp3",
+      "isrc": "GB-SMU-30-13173"
     },
     {
       "id": "s2",
@@ -23,7 +24,8 @@
       "duration": "3:12",
       "image": "assets/muerto en vida.webp",
       "order": 2,
-      "src": "music/muerto en vida/paso el tiempo.mp3"
+      "src": "music/muerto en vida/paso el tiempo.mp3",
+      "isrc": "GB-SMU-30-13177"
     },
     {
       "id": "s3",
@@ -34,7 +36,8 @@
       "duration": "3:22",
       "image": "assets/muerto en vida.webp",
       "order": 3,
-      "src": "music/muerto en vida/uno mas.mp3"
+      "src": "music/muerto en vida/uno mas.mp3",
+      "isrc": "GB-SMU-30-13189"
     },
     {
       "id": "s4",
@@ -45,7 +48,8 @@
       "duration": "3:38",
       "image": "assets/muerto en vida.webp",
       "order": 4,
-      "src": "music/muerto en vida/de vez en cuando.mp3"
+      "src": "music/muerto en vida/de vez en cuando.mp3",
+      "isrc": "GB-SMU-30-13181"
     },
     {
       "id": "s5",
@@ -56,7 +60,8 @@
       "duration": "3:12",
       "image": "assets/muerto en vida.webp",
       "order": 5,
-      "src": "music/muerto en vida/caida tras caida.mp3"
+      "src": "music/muerto en vida/caida tras caida.mp3",
+      "isrc": "GB-SMU-30-13185"
     },
     {
       "id": "s6",
@@ -67,7 +72,8 @@
       "duration": "3:39",
       "image": "assets/muerto en vida.webp",
       "order": 6,
-      "src": "music/muerto en vida/el mismo aire.mp3"
+      "src": "music/muerto en vida/el mismo aire.mp3",
+      "isrc": "GB-SMU-30-13191"
     },
     {
       "id": "s7",
@@ -78,7 +84,8 @@
       "duration": "4:39",
       "image": "assets/muerto en vida.webp",
       "order": 7,
-      "src": "music/muerto en vida/frenesi.mp3"
+      "src": "music/muerto en vida/frenesi.mp3",
+      "isrc": "GB-SMU-30-13175"
     },
     {
       "id": "s8",
@@ -89,7 +96,8 @@
       "duration": "2:45",
       "image": "assets/muerto en vida.webp",
       "order": 8,
-      "src": "music/muerto en vida/ironia.mp3"
+      "src": "music/muerto en vida/ironia.mp3",
+      "isrc": "GB-SMU-30-13187"
     },
     {
       "id": "s9",
@@ -100,7 +108,8 @@
       "duration": "4:22",
       "image": "assets/muerto en vida.webp",
       "order": 9,
-      "src": "music/muerto en vida/lugar para dos.mp3"
+      "src": "music/muerto en vida/lugar para dos.mp3",
+      "isrc": "GB-SMU-30-13183"
     },
     {
       "id": "s10",
@@ -111,7 +120,8 @@
       "duration": "2:05",
       "image": "assets/muerto en vida.webp",
       "order": 10,
-      "src": "music/muerto en vida/mendigo.mp3"
+      "src": "music/muerto en vida/mendigo.mp3",
+      "isrc": "GB-SMU-30-13179"
     },
     {
       "id": "s11",
@@ -122,7 +132,8 @@
       "duration": "4:27",
       "image": "assets/logo-dark.webp",
       "order": 11,
-      "src": "music/single/donde nunca.mp3"
+      "src": "music/single/donde nunca.mp3",
+      "isrc": ""
     },
     {
       "id": "s12",
@@ -133,7 +144,8 @@
       "duration": "3:53",
       "image": "assets/logo-dark.webp",
       "order": 12,
-      "src": "music/single/entre vacios.mp3"
+      "src": "music/single/entre vacios.mp3",
+      "isrc": ""
     }
   ]
 }
